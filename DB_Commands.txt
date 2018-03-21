@@ -1,0 +1,159 @@
+
+
+CREATE TABLE Customer (
+    CustomerID serial   ,
+    fname text   ,
+    lname text   ,
+    uname text   ,
+    Password text   ,
+    BirthDate date   ,
+    Email text   ,
+    Job text   ,
+    Address text   ,
+    profileimageurl text   ,
+    CONSTRAINT pk_Customer PRIMARY KEY (
+        CustomerID
+     )
+);
+
+CREATE TABLE Contract (
+    ID serial   ,
+    CustomerID int   ,
+    MSISDN int   ,
+    packageID int   ,
+    CONSTRAINT pk_Contract PRIMARY KEY (
+        ID
+     )
+);
+
+CREATE TABLE UDR (
+    UDRID serial   ,
+    contractID int   ,
+    callingMSISDN int   ,
+    calledMSISDN int   ,
+    cost double precision  ,
+    TimeZone Date   ,
+    serviceid int   ,
+    unit int   ,
+    isBilled boolean   ,
+    CONSTRAINT pk_UDR PRIMARY KEY (
+        UDRID
+     )
+);
+
+CREATE TABLE servicePackage (
+    id serial   ,
+    Name text   ,
+    RatePlaneId int   ,
+    numberOFMinutes double precision  ,
+    numberOFSMS double precision  ,
+    numberOFDATA double precision  ,
+    Cost double precision  ,
+    CONSTRAINT pk_servicePackage PRIMARY KEY (
+        id
+     )
+);
+
+CREATE TABLE service (
+    id serial   ,
+    Name text   ,
+    Service_Cost double precision  ,
+    packageID int   ,
+    CONSTRAINT pk_service PRIMARY KEY (
+        id
+     )
+);
+
+CREATE TABLE recuring_service (
+    id serial   ,
+    contract_id int   ,
+    added_service_ID int   ,
+    CONSTRAINT pk_recuring_service PRIMARY KEY (
+        id
+     )
+);
+
+CREATE TABLE RatePlane (
+    id serial   ,
+    name text   ,
+    CONSTRAINT pk_RatePlane PRIMARY KEY (
+        id
+     )
+);
+
+CREATE TABLE Added_service (
+    id serial   ,
+    name text   ,
+    description text   ,
+    cost double precision  ,
+    CONSTRAINT pk_Added_service PRIMARY KEY (
+        id
+     )
+);
+
+CREATE TABLE onetime_fee_service (
+    id serial   ,
+    contractID int   ,
+    added_serviceID int   ,
+    isBilled boolean   ,
+    date date   ,
+    CONSTRAINT pk_onetime_fee_service PRIMARY KEY (
+        id
+     )
+);
+
+CREATE TABLE service_servicePackage (
+    id serial   ,
+    serviceID int   ,
+    packageID int   ,
+    CONSTRAINT pk_service_servicePackage PRIMARY KEY (
+        id
+     )
+);
+
+CREATE TABLE Invoice_Record (
+    MSISDN_Number int   ,
+    Date date   ,
+    Path_Of_File text   ,
+    Cost int   
+);
+
+ALTER TABLE Contract ADD CONSTRAINT fk_Contract_CustomerID FOREIGN KEY(CustomerID)
+REFERENCES Customer (CustomerID);
+
+ALTER TABLE Contract ADD CONSTRAINT fk_Contract_packageID FOREIGN KEY(packageID)
+REFERENCES servicePackage (id);
+
+ALTER TABLE UDR ADD CONSTRAINT fk_UDR_contractID FOREIGN KEY(contractID)
+REFERENCES Contract (ID);
+
+ALTER TABLE Invoice_Record ADD CONSTRAINT fk_Invoice_Record_MSISDN_Number FOREIGN KEY(MSISDN_Number)
+REFERENCES Contract (MSISDN);
+
+ALTER TABLE UDR ADD CONSTRAINT fk_UDR_serviceid FOREIGN KEY(serviceid)
+REFERENCES service (id);
+
+ALTER TABLE servicePackage ADD CONSTRAINT fk_servicePackage_RatePlaneId FOREIGN KEY(RatePlaneId)
+REFERENCES RatePlane (id);
+
+ALTER TABLE service ADD CONSTRAINT fk_service_packageID FOREIGN KEY(packageID)
+REFERENCES servicePackage (id);
+
+ALTER TABLE recuring_service ADD CONSTRAINT fk_recuring_service_contract_id FOREIGN KEY(contract_id)
+REFERENCES Contract (ID);
+
+ALTER TABLE recuring_service ADD CONSTRAINT fk_recuring_service_added_service_ID FOREIGN KEY(added_service_ID)
+REFERENCES Added_service (id);
+
+ALTER TABLE onetime_fee_service ADD CONSTRAINT fk_onetime_fee_service_contractID FOREIGN KEY(contractID)
+REFERENCES Contract (ID);
+
+ALTER TABLE onetime_fee_service ADD CONSTRAINT fk_onetime_fee_service_added_serviceID FOREIGN KEY(added_serviceID)
+REFERENCES Added_service (id);
+
+ALTER TABLE service_servicePackage ADD CONSTRAINT fk_service_servicePackage_serviceID FOREIGN KEY(serviceID)
+REFERENCES service (id);
+
+ALTER TABLE service_servicePackage ADD CONSTRAINT fk_service_servicePackage_packageID FOREIGN KEY(packageID)
+REFERENCES servicePackage (id);
+
