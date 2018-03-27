@@ -59,6 +59,21 @@ CREATE TABLE service (
      )
 );
 
+
+CREATE TABLE RatePlane (
+   
+ 	id serial   ,
+    
+	name text   ,
+    
+	CONSTRAINT pk_RatePlane PRIMARY KEY (
+	
+        id
+     
+	)
+
+);
+
 CREATE TABLE recuring_service (
     id serial   ,
     contract_id int   ,
@@ -69,10 +84,14 @@ CREATE TABLE recuring_service (
 );
 
 CREATE TABLE Invoice_Record (
-    MSISDN_Number int   ,
+    id serial,
+	MSISDN_Number bigint   ,
     Date date   ,
     Path_Of_File text   ,
-    Cost int   
+    Cost int ,
+ CONSTRAINT pk_Invoice_Record PRIMARY KEY(
+        id
+     )  
 );
 
 CREATE TABLE Added_service (
@@ -125,7 +144,7 @@ ALTER TABLE recuring_service ADD CONSTRAINT fk_recuring_service_added_service_ID
 REFERENCES Added_service (id)   ON DELETE CASCADE;
 
 ALTER TABLE Invoice_Record ADD CONSTRAINT fk_Invoice_Record_MSISDN_Number FOREIGN KEY(MSISDN_Number)
-REFERENCES Contract (MSISDN)   ON DELETE CASCADE;
+REFERENCES Contract (MSISDN) ON DELETE CASCADE;
 
 ALTER TABLE onetime_fee_service ADD CONSTRAINT fk_onetime_fee_service_contractID FOREIGN KEY(contractID)
 REFERENCES Contract (ID)   ON DELETE CASCADE;
@@ -138,11 +157,23 @@ REFERENCES service (id)  ON DELETE CASCADE;
 
 ALTER TABLE service_servicePackage ADD CONSTRAINT fk_service_servicePackage_packageID FOREIGN KEY(packageID)
 REFERENCES servicePackage (id)  ON DELETE CASCADE;
- 
+
+ALTER TABLE servicePackage ADD CONSTRAINT fk_servicePackage_RatePlaneId FOREIGN KEY(RatePlaneId)
+
+REFERENCES RatePlane (id) ON DELETE CASCADE;
+
 alter table udr alter column calledmsisdn type text;
+
+
 
 insert into service (name) values('voice');
 
+
+
 insert into service (name) values('sms');
 
+
+
 insert into service (name) values('data');
+
+
