@@ -176,4 +176,5 @@ insert into service (name) values('sms');
 
 insert into service (name) values('data');
 
+alter table udr add column startdate text;
 
