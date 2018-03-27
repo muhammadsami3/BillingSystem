@@ -138,4 +138,11 @@ REFERENCES service (id)  ON DELETE CASCADE;
 
 ALTER TABLE service_servicePackage ADD CONSTRAINT fk_service_servicePackage_packageID FOREIGN KEY(packageID)
 REFERENCES servicePackage (id)  ON DELETE CASCADE;
+ 
+alter table udr alter column calledmsisdn type text;
 
+insert into service (name) values('voice');
+
+insert into service (name) values('sms');
+
+insert into service (name) values('data');
