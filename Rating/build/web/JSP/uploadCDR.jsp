@@ -55,7 +55,7 @@
             }
 
             db.rating(cdrInfo[0], cdrInfo[1], cost, serviceid, unit, startTime);
-            System.out.println("className.methodName2()" + callingmsisdn + calledmsisdn + serviceid + unit + startTime + cost);
+            System.out.println("className.methodNames()" + callingmsisdn + calledmsisdn + serviceid + unit + startTime + cost);
         }
     } catch (IOException ex) {
         ex.printStackTrace();
