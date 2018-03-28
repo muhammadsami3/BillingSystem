@@ -112,7 +112,7 @@ public class AddInfo extends HttpServlet {
         System.out.println(request.getParameter(" numberOFSMS"));
         System.out.println(request.getParameter(" numberOFDATA"));
         
-        response.sendRedirect("addServices.jsp");
+        response.sendRedirect("MainPage.jsp");
        
     }
 

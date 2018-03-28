@@ -1,0 +1,3 @@
+insert into udr (contractid,callingmsisdn,calledmsisdn,cost,timezone,serviceid,unit,isbilled) values (1,00201022591400,'00201289779632',5.0,now(),1,1,'f');
+
+insert into invoicing values(3,'00201022591400',89,49,100000,500,now());
