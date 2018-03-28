@@ -4,6 +4,7 @@
     Author     : root
 --%>
 
+<%@page import="DataBase.dbMethods"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.ResultSet"%>
@@ -20,63 +21,47 @@
 <%@page import="javafx.stage.FileChooser"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%! String cdrLine;
-BufferedReader bufferedReader;
-String callingmsisdn,calledmsisdn,cost,timezone,serviceid,unit,isbilled,startTime;
-
-   public static Connection conn;
-    PreparedStatement stmp;
-    Statement stmt2;
-    ResultSet rs;
-   static ResultSet rs2;
-
- static  void select() throws SQLException{
-          String queryString = "select now();";
-        PreparedStatement stmt = conn.prepareStatement(queryString);
-        ResultSet rs = stmt.executeQuery();
-        while (rs.next()){
-            System.out.println("DataBase.dbMethods.select()"+rs.getString(1));            
-            
-        }
-        
-    }
+    BufferedReader bufferedReader;
+    String callingmsisdn, calledmsisdn, startTime;
+    int serviceid;
+    long unit;
+    Double cost;
 %>
 <%
+
+    String CDR = request.getParameter("CDR");
+
     try {
-            Class.forName("org.postgresql.Driver");
-            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/billing", "postgres", "");
+        File file = new File("/myprojects/BillingSystem/Rating/" + CDR);
+        bufferedReader = new BufferedReader(new FileReader(file));
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            cdrLine = String.valueOf(line);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
-    
-    String CDR=request.getParameter("CDR");
-
-   try {
-            File file = new File("/myprojects/BillingSystem/Rating/"+CDR);
-            bufferedReader = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                cdrLine=String.valueOf(line);
-                
-String cdrInfo[] = cdrLine.split(","); 
-for (int i=0;i<cdrInfo.length;i++){
-    System.out.println("className.methodName()"+cdrInfo[i]);
-}
-callingmsisdn=cdrInfo[0];
-
-calledmsisdn=cdrInfo[1];
-serviceid=cdrInfo[2];
-unit=cdrInfo[3];
-startTime=cdrInfo[4];
-cost=cdrInfo[5];
-System.out.println("className.methodName2()"+callingmsisdn+calledmsisdn+serviceid+unit+startTime+cost);
+            String cdrInfo[] = cdrLine.split(",");
+            for (int i = 0; i < cdrInfo.length; i++) {
+                System.out.println("className.methodName()" + cdrInfo[i]);
             }
-   }catch (IOException ex) {
-           ex.printStackTrace();
-        }finally{
- bufferedReader.close();
-}
+            callingmsisdn = cdrInfo[0];
+            calledmsisdn = cdrInfo[1];
+            serviceid = Integer.parseInt(cdrInfo[2]);
+            unit = Long.parseLong(cdrInfo[3]);
+            startTime = cdrInfo[4];
+            cost = Double.parseDouble(cdrInfo[5]);
+            dbMethods db = new dbMethods();
+            db.connectToDatabase();
+            if (serviceid != 3) {
+                 cost = db.getCost(serviceid, callingmsisdn);
+            }
+
+            db.rating(cdrInfo[0], cdrInfo[1], cost, serviceid, unit, startTime);
+            System.out.println("className.methodName2()" + callingmsisdn + calledmsisdn + serviceid + unit + startTime + cost);
+        }
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    } finally {
+        bufferedReader.close();
+    }
 %>
 
 <!--
