@@ -46,8 +46,15 @@ public class dbMethods {
     public static void main(String[] args) throws SQLException {
         dbMethods db = new dbMethods();
         db.connectToDatabase();
+        
 //        System.out.println("DataBase.dbMethods.main()" + db.getCost(1, "00201022591400"));
-        System.out.println("DataBase.dbMethods.main()" + db.getcontractid("00201022591400"));
+//        System.out.println("DataBase.dbMethods.main()" + db.getcontractid("00201022591400"));
+//        System.out.println("DataBase.dbMethods.main()" + db.getInvoice("00201022591400"));
+        ResultSet resultSet=db.getInvoice("00201022591400");
+        while (resultSet.next()) { 
+            System.out.println("DataBase.dbMethods.main()--> "+resultSet.getString(3));
+            
+        }
 //        db.rating("00201022591400", "00201022591400", 50.50, 1, 55555555, "10:10:10");
 //        select();
     }
@@ -110,6 +117,13 @@ public double getCost(int serviceid, String msisdn) {
             Logger.getLogger(dbMethods.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+     public ResultSet getInvoice(String msisdn) throws SQLException {
+        String queryString = "select * from invoicing where msisdn=?";
+        PreparedStatement stmt = conn.prepareStatement(queryString);
+        stmt.setString(1, msisdn);
+        ResultSet rs = stmt.executeQuery();
+        return  rs;
     }
 
     static void select() throws SQLException {
