@@ -87,6 +87,9 @@ public final class homee_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  margin-top: 30px;\r\n");
       out.write("  height: 1500px; /* Used in this example to enable scrolling */\r\n");
       out.write("}\r\n");
+      out.write("p.thicker {\r\n");
+      out.write("    font-weight: 900;\r\n");
+      out.write("}\r\n");
       out.write("</style>\r\n");
       out.write("`\r\n");
       out.write("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\r\n");
@@ -147,7 +150,7 @@ public final class homee_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        \r\n");
       out.write("    ");
 
-           out.println("<p style='font-family:serif' align='center'><font size='6' color='black'>RATE PLANES</font></p>");
+           out.println("<p style='font-family:serif' align='center' class='thicker' ><font size='6' color='black'>RATE PLANES</font></p>");
             int sectionId=0;
             DatabaseHandler dbHandler = new DatabaseHandler();
             
@@ -196,7 +199,7 @@ public final class homee_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("    ");
 
-        out.println("<a name='section" + sectionId1 + "'><p style='font-family:serif' align='center'><font size='6' color='black'>" + categories1.getString(2).toUpperCase() + "</font></p></a>");
+        out.println("<a name='section" + sectionId1 + "'><p style='font-family:serif' align='center' class='thicker'><font size='6' color='black'>" + categories1.getString(2).toUpperCase() + "</font></p></a>");
         out.println("<div class='fakeimg grid-container' style='height:500px; overflow-y: scroll' >");
         ResultSet products = dbHandler1.getAllServicePackage(categories1.getString(2));
         while (products.next()) {
