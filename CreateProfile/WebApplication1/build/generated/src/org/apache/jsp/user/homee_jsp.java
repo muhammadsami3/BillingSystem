@@ -102,12 +102,12 @@ public final class homee_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    \r\n");
       out.write("\r\n");
       out.write("<div class=\"navbar\">\r\n");
-      out.write("  <a href=\"#home\">Home</a>\r\n");
-      out.write("  <a href=\"#news\">News</a>\r\n");
-      out.write("  <a href=\"#contact\">Contact</a>\r\n");
-      out.write("  <a href=\"#home\">Home</a>\r\n");
-      out.write("  <a href=\"#news\">News</a>\r\n");
-      out.write("  <a href=\"#contact\">Contact</a>\r\n");
+      out.write("  <a href=\"/WebApplication1/user/homee.jsp\">Home</a>\r\n");
+      out.write("  <a href=\"../MainPage.jsp\">ADD RATE PLANE</a>\r\n");
+      out.write("  <a href=\"#contact\">BILL</a>\r\n");
+      out.write("  <a href=\"../Rating/p2/index.html\">RATE</a>\r\n");
+      out.write("  <a href=\"#news\">SEARCH</a>\r\n");
+      out.write("  <a href=\"#contact\">ADD CUSTOMER</a>\r\n");
       out.write("</div>\r\n");
       out.write("\r\n");
       out.write("<div class=\"header\" style=\"width:100% ;height: 600px \">\r\n");
@@ -140,12 +140,10 @@ public final class homee_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    \r\n");
       out.write("    \r\n");
       out.write("    \r\n");
-      out.write("<div >\r\n");
-      out.write("  \r\n");
-      out.write("</div>\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("<div class=\"leftcolumn\"> \r\n");
-      out.write("    <div class=\"card\" >\r\n");
+      out.write("    <div class=\"card2\" style=\"border-width:5px;  margin:5px; border-style:inset;border-color:#707694;\">\r\n");
       out.write("        \r\n");
       out.write("    ");
 
@@ -161,20 +159,22 @@ public final class homee_jsp extends org.apache.jasper.runtime.HttpJspBase
             }
         
       out.write("\r\n");
+      out.write("    </div>\r\n");
       out.write("    \r\n");
+      out.write("</div>\r\n");
       out.write("<!--        <h3>Categories</h3>\r\n");
       out.write("        <div class=\"fakeimg\"><a href=\"#C1\"  style=\"float:left\">\r\n");
       out.write("                <!input type=\"image\"  id=\"catImg1\" src=\"Img/mobileCat.png\" alt=\"Submit\"-- >Mobiles</a></div>\r\n");
       out.write("        <div class=\"fakeimg\"><a href=\"#C2\"  style=\"float:left\"><!input type=\"image\"  id=\"catImg2\" src=\"Img/laptops.png\" alt=\"Submit\"-- >Laptops</a></div>\r\n");
       out.write("        <div class=\"fakeimg\"><a href=\"#C3\"  style=\"float:left\"><!input type=\"image\"  id=\"catImg3\" src=\"Img/cameraCat.png\" alt=\"Submit\"-- >Cameras</a></div>-->\r\n");
-      out.write("    </div>\r\n");
+      out.write("    \r\n");
       out.write("        \r\n");
       out.write("    \r\n");
       out.write("<!--    <div class=\"card\">\r\n");
       out.write("        <h3>Follow Me</h3>\r\n");
       out.write("        <p>Some text..</p>\r\n");
-      out.write("    </div>-->\r\n");
-      out.write("</div>\r\n");
+      out.write("    </d-->\r\n");
+      out.write("\r\n");
       out.write("        \r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -212,9 +212,9 @@ public final class homee_jsp extends org.apache.jasper.runtime.HttpJspBase
                 out.println("<br/>");
                 out.println("<br/>");
                 
-                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Minutes: </b>" + products.getDouble(4) + "<b>Minutes</b></font></h4>");
-                out.println("<h4 style='font-family:Tahoma ; text-align: left' ><font size='3' color='black'><b>Number Of SMS </b>" + products.getDouble(5) + "<b>SMS</b></font></h4>");
-                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Data </b>" + products.getDouble(6) + "<b>MigaBytes</b></font></h4>");
+                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Minutes : </b>" + products.getDouble(4) + "<b>Minutes</b></font></h4>");
+                out.println("<h4 style='font-family:Tahoma ; text-align: left' ><font size='3' color='black'><b>Number Of SMS : </b>" + products.getDouble(5) + "<b>SMS</b></font></h4>");
+                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Data : </b>" + products.getDouble(6) + "<b>MigaBytes</b></font></h4>");
                 out.println("<h4 style='font-family:Tahoma ; text-align: left' ><font size='3' color='black'><b>Cost of Service : </b>" +products.getDouble(7) + "<b>L.E</b></font></h4>");
     
       out.write("\r\n");
@@ -226,7 +226,7 @@ public final class homee_jsp extends org.apache.jasper.runtime.HttpJspBase
                 }
                 out.println("</div>");
                  out.println("</div>");
-            }
+            }  
         
       out.write("\r\n");
       out.write("</div>\r\n");

@@ -58,12 +58,12 @@ body {margin:0;}
     
 
 <div class="navbar">
-  <a href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
+  <a href="/WebApplication1/user/homee.jsp">Home</a>
+  <a href="../MainPage.jsp">ADD RATE PLANE</a>
+  <a href="#contact">BILL</a>
+  <a href="../Rating/p2/index.html">RATE</a>
+  <a href="#news">SEARCH</a>
+  <a href="#contact">ADD CUSTOMER</a>
 </div>
 
 <div class="header" style="width:100% ;height: 600px ">
@@ -96,12 +96,10 @@ body {margin:0;}
     
     
     
-<div >
-  
-</div>
+
 
 <div class="leftcolumn"> 
-    <div class="card" >
+    <div class="card2" style="border-width:5px;  margin:5px; border-style:inset;border-color:#707694;">
         
     <%
            out.println("<p style='font-family:serif' align='center'><font size='6' color='black'>RATE PLANES</font></p>");
@@ -115,20 +113,22 @@ body {margin:0;}
               out.println("<div class='fakeimg'><a style='text-decoration: none;' href='#section" + sectionId + "'  style='float:center'><button class='catbutton' style=' font-family:serif ;width:100%'><font size='6' color='white'>" + categories.getString(2).toUpperCase() + "</font></button></a></div>");
             }
         %>
+    </div>
     
+</div>
 <!--        <h3>Categories</h3>
         <div class="fakeimg"><a href="#C1"  style="float:left">
                 <!input type="image"  id="catImg1" src="Img/mobileCat.png" alt="Submit"-- >Mobiles</a></div>
         <div class="fakeimg"><a href="#C2"  style="float:left"><!input type="image"  id="catImg2" src="Img/laptops.png" alt="Submit"-- >Laptops</a></div>
         <div class="fakeimg"><a href="#C3"  style="float:left"><!input type="image"  id="catImg3" src="Img/cameraCat.png" alt="Submit"-- >Cameras</a></div>-->
-    </div>
+    
         
     
 <!--    <div class="card">
         <h3>Follow Me</h3>
         <p>Some text..</p>
-    </div>-->
-</div>
+    </d-->
+
         
 
 
@@ -164,9 +164,9 @@ body {margin:0;}
                 out.println("<br/>");
                 out.println("<br/>");
                 
-                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Minutes: </b>" + products.getDouble(4) + "<b>Minutes</b></font></h4>");
-                out.println("<h4 style='font-family:Tahoma ; text-align: left' ><font size='3' color='black'><b>Number Of SMS </b>" + products.getDouble(5) + "<b>SMS</b></font></h4>");
-                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Data </b>" + products.getDouble(6) + "<b>MigaBytes</b></font></h4>");
+                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Minutes : </b>" + products.getDouble(4) + "<b>Minutes</b></font></h4>");
+                out.println("<h4 style='font-family:Tahoma ; text-align: left' ><font size='3' color='black'><b>Number Of SMS : </b>" + products.getDouble(5) + "<b>SMS</b></font></h4>");
+                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Data : </b>" + products.getDouble(6) + "<b>MigaBytes</b></font></h4>");
                 out.println("<h4 style='font-family:Tahoma ; text-align: left' ><font size='3' color='black'><b>Cost of Service : </b>" +products.getDouble(7) + "<b>L.E</b></font></h4>");
     %>
    
@@ -176,7 +176,7 @@ body {margin:0;}
                 }
                 out.println("</div>");
                  out.println("</div>");
-            }
+            }  
         %>
 </div>
 <script>
