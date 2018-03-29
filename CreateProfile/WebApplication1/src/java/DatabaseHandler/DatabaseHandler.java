@@ -33,7 +33,7 @@ public class DatabaseHandler {
         rs = null;
         try {
             Class.forName("org.postgresql.Driver");
-            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5932/billing", "postgres", "147596382");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/billing", "postgres", "1022591400");
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException ex) {
