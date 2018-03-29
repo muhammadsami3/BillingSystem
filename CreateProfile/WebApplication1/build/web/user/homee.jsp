@@ -43,6 +43,9 @@ body {margin:0;}
   margin-top: 30px;
   height: 1500px; /* Used in this example to enable scrolling */
 }
+p.thicker {
+    font-weight: 900;
+}
 </style>
 `
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -102,7 +105,7 @@ body {margin:0;}
     <div class="card2" style="border-width:5px;  margin:5px; border-style:inset;border-color:#707694;">
         
     <%
-           out.println("<p style='font-family:serif' align='center'><font size='6' color='black'>RATE PLANES</font></p>");
+           out.println("<p style='font-family:serif' align='center' class='thicker' ><font size='6' color='black'>RATE PLANES</font></p>");
             int sectionId=0;
             DatabaseHandler dbHandler = new DatabaseHandler();
             
@@ -148,7 +151,7 @@ body {margin:0;}
 
 
     <%
-        out.println("<a name='section" + sectionId1 + "'><p style='font-family:serif' align='center'><font size='6' color='black'>" + categories1.getString(2).toUpperCase() + "</font></p></a>");
+        out.println("<a name='section" + sectionId1 + "'><p style='font-family:serif' align='center' class='thicker'><font size='6' color='black'>" + categories1.getString(2).toUpperCase() + "</font></p></a>");
         out.println("<div class='fakeimg grid-container' style='height:500px; overflow-y: scroll' >");
         ResultSet products = dbHandler1.getAllServicePackage(categories1.getString(2));
         while (products.next()) {
@@ -164,10 +167,10 @@ body {margin:0;}
                 out.println("<br/>");
                 out.println("<br/>");
                 
-                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Minutes : </b>" + products.getDouble(4) + "<b>Minutes</b></font></h4>");
-                out.println("<h4 style='font-family:Tahoma ; text-align: left' ><font size='3' color='black'><b>Number Of SMS : </b>" + products.getDouble(5) + "<b>SMS</b></font></h4>");
-                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Data : </b>" + products.getDouble(6) + "<b>MigaBytes</b></font></h4>");
-                out.println("<h4 style='font-family:Tahoma ; text-align: left' ><font size='3' color='black'><b>Cost of Service : </b>" +products.getDouble(7) + "<b>L.E</b></font></h4>");
+                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Minutes : </b>" + products.getDouble(4) + "<b> Minutes</b></font></h4>");
+                out.println("<h4 style='font-family:Tahoma ; text-align: left' ><font size='3' color='black'><b>Number Of SMS : </b>" + products.getDouble(5) + "<b> SMS</b></font></h4>");
+                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Data : </b>" + products.getDouble(6) + "<b> MigaBytes</b></font></h4>");
+                out.println("<h4 style='font-family:Tahoma ; text-align: left' ><font size='3' color='black'><b>Cost of Service : </b>" +products.getDouble(7) + "<b> L.E</b></font></h4>");
     %>
    
         <%
