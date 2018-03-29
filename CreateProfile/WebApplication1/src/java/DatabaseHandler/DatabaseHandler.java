@@ -18,6 +18,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DatabaseHandler {
 
@@ -71,6 +73,17 @@ public class DatabaseHandler {
         return id;
     }
 
+    public ResultSet getAllRatePlane() {
+        try {
+            String queryString = new String("select * from rateplane");
+            preparedStmt = conn.prepareStatement(queryString);
+            rs = preparedStmt.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return rs;
+    }
+    
     public int addServicePackage(String ratePlane,String SeviceName,double numVoice,double numSMS,double numData,double cost) {
         int id = 0;
         int ratePlaneName=getRatePlanId(ratePlane);
@@ -93,6 +106,20 @@ public class DatabaseHandler {
         return id;
     }
     
+    public ResultSet getAllServicePackage(String rateplane) {
+        int id = getRatePlanId(rateplane);
+        try {
+            String queryString = new String("select * from servicepackage where rateplaneid=?");
+//            String queryString = new String("select * from servicepackage");
+            preparedStmt = conn.prepareStatement(queryString);
+            preparedStmt.setInt(1, id);
+            rs = preparedStmt.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return rs;
+    }
+    
     public int getServicePackageId(String servicePackageNmae) {
         int id = 0;
         try {
@@ -108,6 +135,17 @@ public class DatabaseHandler {
         }
         return id;
     }
+    
+//    public ResultSet getAllServicePAkage() {
+//        try {
+//            String queryString = new String("select name from servicepackage");
+//            preparedStmt = conn.prepareStatement(queryString);
+//            rs = preparedStmt.executeQuery();
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
+//        return rs;
+//    }
     
      public int addService(String SeviceName,double cost,String servicePackageID) {
         int id = 0;
@@ -284,10 +322,19 @@ public class DatabaseHandler {
     
      //insrtcustomer
     public static void main(String[] args) {
-        DatabaseHandler d =new DatabaseHandler();
+        try {
+            DatabaseHandler d =new DatabaseHandler();
 //        d.addRatePlan("coonetc");
 
 //d.addServicePackage("conect","con2",30,40,50, 10);
+ResultSet categories1 = d.getAllServicePackage("");
+categories1.next() ;
+System.out.println(categories1.getString("name"));
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                    
+        
     }
    
 }
