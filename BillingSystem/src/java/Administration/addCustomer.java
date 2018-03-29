@@ -43,7 +43,7 @@ public class addCustomer extends HttpServlet {
     String profile = "";
     String msisdn = "";
 
-    Statement stmt;
+    PreparedStatement stmt;
     PreparedStatement prep;
     ResultSet rs;
     Boolean islogin = true;
@@ -79,17 +79,17 @@ public class addCustomer extends HttpServlet {
         System.out.println("Administration.addCustomer.doPost()" + msisdn);
 
         try {
-            stmt = connect.createStatement();
             String queryString = new String("Select * from contract where msisdn=?");
-            PreparedStatement stmt = conn.prepareStatement(queryString);
+            stmt = connect.prepareStatement(queryString);
             stmt.setString(1, msisdn);
-            ResultSet rs = stmt.executeQuery();
+            rs = stmt.executeQuery();
 
             if (!rs.next()) {
 
-                String queryString1 = new String("Select * from Customer where uname='" + uname + "';");
-
-                rs = stmt.executeQuery(queryString1);
+                String queryString1 = new String("Select * from Customer where uname=?");
+                stmt = connect.prepareStatement(queryString);
+                stmt.setString(1, msisdn);
+                rs = stmt.executeQuery();
                 if (!rs.next()) {
                     flag = true;
                 } else {
