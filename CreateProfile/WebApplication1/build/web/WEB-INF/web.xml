@@ -8,10 +8,6 @@
         <servlet-name>AddNewServiceInfo</servlet-name>
         <servlet-class>AddNewService.AddNewServiceInfo</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>addNewCustomer</servlet-name>
-        <servlet-class>addNewCustomer</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>AddInfo</servlet-name>
         <url-pattern>/AddInfo</url-pattern>
@@ -19,10 +15,6 @@
     <servlet-mapping>
         <servlet-name>AddNewServiceInfo</servlet-name>
         <url-pattern>/AddNewServiceInfo</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>addNewCustomer</servlet-name>
-        <url-pattern>/addNewCustomer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
