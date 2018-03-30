@@ -55,9 +55,9 @@ public class AddNewServiceInfo extends HttpServlet {
         d2.addAdded_service(request.getParameter("serviceName"), Double.parseDouble(request.getParameter("cost")), request.getParameter("description"));
         
         if (request.getParameter("serviceType").equals("recurring")) {
-            d2.addRecuring_service(+201115535369L, request.getParameter("serviceName"));
+            //d2.addRecuring_service(+201115535369L, request.getParameter("serviceName"));
         } else if (request.getParameter("serviceType").equals("onetime")) {
-            d2.addOneTime(+201115535369L, request.getParameter("serviceName"));
+            //d2.addOneTime(+201115535369L, request.getParameter("serviceName"));
         }
     }
 
