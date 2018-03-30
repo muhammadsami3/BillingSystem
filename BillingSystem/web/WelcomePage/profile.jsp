@@ -1,5 +1,5 @@
+<%@page import="DataBase.DatabaseHandler"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="DatabaseHandler.DatabaseHandler"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>

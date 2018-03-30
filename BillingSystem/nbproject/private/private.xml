@@ -34,7 +34,9 @@
             <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/selectServicePackage.jsp</file>
         </group>
         <group>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/links/linkto.java</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/home.jsp</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/AddInfoAboutService/AddInfo.java</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/header_footer/header.html</file>
         </group>
     </open-files>
 </project-private>
