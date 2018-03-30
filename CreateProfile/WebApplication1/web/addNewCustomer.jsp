@@ -68,7 +68,7 @@
          //  Logger.getLogger(addNewCustomer.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            connect = DriverManager.getConnection("jdbc:postgresql://localhost:5432/billing", "postgres", "postgre");
+            connect = DriverManager.getConnection("jdbc:postgresql://localhost:5432/billing", "postgres", "1022591400");
         } catch (SQLException ex) {
          //   Logger.getLogger(addNewCustomer.class.getName()).log(Level.SEVERE, null, ex);
         }
