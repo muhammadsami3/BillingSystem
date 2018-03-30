@@ -26,7 +26,7 @@
 <%@page import="java.awt.Color" %>
 <%
     Document document = new Document(PageSize.A4, 50, 50, 50, 50);
-    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("E:\\iti_38 Never say i can't\\text1.pdf"));
+    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("text1.pdf"));
     document.open();
     Image image = Image.getInstance("C:\\Users\\AZIZ\\Desktop\\1.jpg");
     Image image1 = Image.getInstance("C:\\Users\\AZIZ\\Desktop\\LOGO.jpg");

@@ -27,7 +27,7 @@ document.open();
 //      document.add(paragraph1);
 // 
 dbMethods db=new dbMethods();
-//db.connectToDatabase();
+db.connectToDatabase();
 ResultSet rs=db.getInvoice("00201022591400");
 while (rs.next()) {        
        document.add(new Paragraph("Mins: "+rs.getString("mins")+", sms:  "+rs.getString("sms")+
