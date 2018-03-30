@@ -43,7 +43,7 @@
     <div class="card2" style="border-width:5px;  margin:5px; border-style:inset;border-color:#707694;">
         
     <%
-           out.println("<p style='font-family:serif' align='center'><font size='6' color='black'>RATE PLANES</font></p>");
+           out.println("<p style='font-family:serif' align='center' class='thicker' ><font size='6' color='black'>RATE PLANES</font></p>");
             int sectionId=0;
             DatabaseHandler dbHandler = new DatabaseHandler();
             
@@ -57,6 +57,20 @@
     </div>
     
 </div>
+<!--        <h3>Categories</h3>
+        <div class="fakeimg"><a href="#C1"  style="float:left">
+                <!input type="image"  id="catImg1" src="Img/mobileCat.png" alt="Submit"-- >Mobiles</a></div>
+        <div class="fakeimg"><a href="#C2"  style="float:left"><!input type="image"  id="catImg2" src="Img/laptops.png" alt="Submit"-- >Laptops</a></div>
+        <div class="fakeimg"><a href="#C3"  style="float:left"><!input type="image"  id="catImg3" src="Img/cameraCat.png" alt="Submit"-- >Cameras</a></div>-->
+    
+        
+    
+<!--    <div class="card">
+        <h3>Follow Me</h3>
+        <p>Some text..</p>
+    </d-->
+
+        
 
 
 <div class="rightcolumn" >
@@ -68,8 +82,6 @@
         DatabaseHandler dbHandler1 = new DatabaseHandler();
         ResultSet categories1 = dbHandler1.getAllRatePlane();
         while (categories1.next()) {
-            out.println("<br>");
-            out.println("<br>");
             sectionId1++;
             out.println("<div class='card3' style='border-width:5px;  margin:5px; border-style:inset;border-color:#707694;'>");
     %>
@@ -77,7 +89,7 @@
 
 
     <%
-        out.println("<a name='section" + sectionId1 + "'><p style='font-family:serif ;background-color: #707694' align='center'><font size='6' color='black'>" + categories1.getString(2).toUpperCase() + "</font></p></a>");
+        out.println("<a name='section" + sectionId1 + "'><p style='font-family:serif' align='center' class='thicker'><font size='6' color='black'>" + categories1.getString(2).toUpperCase() + "</font></p></a>");
         out.println("<div class='fakeimg grid-container' style='height:500px; overflow-y: scroll' >");
         ResultSet products = dbHandler1.getAllServicePackage(categories1.getString(2));
         while (products.next()) {
@@ -93,10 +105,10 @@
                 out.println("<br/>");
                 out.println("<br/>");
                 
-                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Minutes : </b>" + products.getDouble(4) + "<b>Minutes</b></font></h4>");
-                out.println("<h4 style='font-family:Tahoma ; text-align: left' ><font size='3' color='black'><b>Number Of SMS : </b>" + products.getDouble(5) + "<b>SMS</b></font></h4>");
-                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Data : </b>" + products.getDouble(6) + "<b>MigaBytes</b></font></h4>");
-                out.println("<h4 style='font-family:Tahoma ; text-align: left' ><font size='3' color='black'><b>Cost of Service : </b>" +products.getDouble(7) + "<b>L.E</b></font></h4>");
+                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Minutes : </b>" + products.getDouble(4) + "<b> Minutes</b></font></h4>");
+                out.println("<h4 style='font-family:Tahoma ; text-align: left' ><font size='3' color='black'><b>Number Of SMS : </b>" + products.getDouble(5) + "<b> SMS</b></font></h4>");
+                out.println("<h4 style='font-family:Tahoma ;text-align: left'><font size='3' color='black'><b>Number Of Data : </b>" + products.getDouble(6) + "<b> MigaBytes</b></font></h4>");
+                out.println("<h4 style='font-family:Tahoma ; text-align: left' ><font size='3' color='black'><b>Cost of Service : </b>" +products.getDouble(7) + "<b> L.E</b></font></h4>");
     %>
    
         <%
