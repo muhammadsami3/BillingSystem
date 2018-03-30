@@ -4,6 +4,7 @@
     Author     : root
 --%>
 
+<%@page import="links.linkto"%>
 <%@page import="DataBase.dbMethods"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.SQLException"%>
@@ -29,10 +30,12 @@
 %>
 <%
 
-    String CDR = request.getParameter("CDR");
-
     try {
-        File file = new File("/BillingSystem/CDR/"+CDR);
+        String CDR = (String) session.getAttribute("cdr");
+
+        ServletContext context = pageContext.getServletContext();
+        String cdrPath = context.getInitParameter("file-upload");
+        File file = new File(cdrPath + CDR);
         bufferedReader = new BufferedReader(new FileReader(file));
         String line;
         while ((line = bufferedReader.readLine()) != null) {
@@ -51,7 +54,7 @@
             dbMethods db = new dbMethods();
             db.connectToDatabase();
             if (serviceid != 3) {
-                 cost = db.getCost(serviceid, callingmsisdn);
+                cost = db.getCost(serviceid, callingmsisdn);
             }
 
             db.rating(cdrInfo[0], cdrInfo[1], cost, serviceid, unit, startTime);
@@ -60,26 +63,8 @@
     } catch (IOException ex) {
         ex.printStackTrace();
     } finally {
-        bufferedReader.close(); 
+        bufferedReader.close();
+        session.setAttribute("stored", "y");
     }
-    response.sendRedirect("/WebApplication1/WelcomePage.jsp");
+    response.sendRedirect(linkto.ratePage);
 %>
-
-<!--
-txt
-Dial A, Dial B, Service ID, Duration/message/Volume, Start time, External charges
-00201221234567,http://www.google.com,3,23167,10:03:20,10
-00201221234567,00201001234567,1,100,10:03:20,0
-Dial Format: 00201221234567
-In case of Data, Dial B will be the URL
-Service ID
-Voice  1
-SMS  2
-Data  3
-Duration  Seconds
-Messages  (1,2,3,…)
-Volume  Bytes
-Time (HH[24]:MM:SS)
-External fees in piasters
-Name: CDRYYYYmmddHHMMSS
--->

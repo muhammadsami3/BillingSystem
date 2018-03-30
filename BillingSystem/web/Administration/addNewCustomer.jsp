@@ -24,13 +24,13 @@
     </head>
 
     <body>
-        <form class="modal-content" action="/BillingSystem/addCustomer" method="get">
+        <form class="modal-content" action="/BillingSystem/addCustomer" method="post">
             <div class="container">
                 <h1>New Customer</h1>
                 <p>Please fill in this form to add new Customer.</p>
                 <hr>
                 <label for="msisdn"><b>Mobile Number</b></label>
-                <input type="text" placeholder="Enter Mobile Nomber" name="msisdn" required>
+                <input type="text" pattern="00201[0-9]{9}" placeholder="Enter Mobile Number ex.00201********* " name="msisdn" required>
 
                 <label for="fname"><b>First Name</b></label>
                 <input type="text" placeholder="Enter First Name" name="fname" required>
@@ -46,48 +46,47 @@
 
 
                 <label for="birthdate"><b> Birth date</b></label>
-                <input type="text" placeholder="Enter Birth date" name="birthdate" required>
+                <input type="text" name="birthdate" pattern="\d{1,2}/\d{1,2}/\d{4}" placeholder="dd/mm/yyyy" required>   
 
                 <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
-
+                <input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="example@gmail.com" required>  
 
                 <label for="address"><b> Address</b></label>
                 <input type="text" placeholder="Enter Address" name="address" required>
 
                 <label for="profile"><b>Select Profile</b></label>
-<div class="selectWrapper">
-                <select  name ="rateplane">
-                    <%
-                        Statement stmt;
-                        PreparedStatement prep;
-                        ResultSet rs;
-                        Connection connect = null;
+                <div class="selectWrapper">
+                    <select  name ="rateplane">
+                        <%
+                            Statement stmt;
+                            PreparedStatement prep;
+                            ResultSet rs;
+                            Connection connect = null;
 
-                        try {
-                            Class.forName("org.postgresql.Driver");
-                            connect = DriverManager.getConnection(linkto.DB, linkto.databaseUser, linkto.dbPasswd);
+                            try {
+                                Class.forName("org.postgresql.Driver");
+                                connect = DriverManager.getConnection(linkto.DB, linkto.databaseUser, linkto.dbPasswd);
 
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            System.out.println(e.getMessage());
-                        }
-                        stmt = connect.createStatement();
-                        String queryString = new String("Select * from rateplane");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                System.out.println(e.getMessage());
+                            }
+                            stmt = connect.createStatement();
+                            String queryString = new String("Select * from rateplane");
 
-                        rs = stmt.executeQuery(queryString);
-                        while (rs.next()) {
-                            out.println("<option value='" + rs.getInt(1) + "'>" + rs.getString(2) + "</option>");
-                        }
-                    %>
-                </select>
-            </div> 
-            <br>
-            <br>
-            <input class="button" type="submit" style="width: 100%;" value="ADD"/>
-        </div>
+                            rs = stmt.executeQuery(queryString);
+                            while (rs.next()) {
+                                out.println("<option value='" + rs.getInt(1) + "'>" + rs.getString(2) + "</option>");
+                            }
+                        %>
+                    </select>
+                </div> 
+                <br>
+                <br>
+                <input class="button" type="submit" style="width: 100%;" value="ADD"/>
+            </div>
 
-    </form>
-</body>
+        </form>
+    </body>
 </html>
 
