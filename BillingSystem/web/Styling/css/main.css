@@ -166,6 +166,7 @@ iframe {
   border-radius: 10px;
   overflow: hidden;
   padding: 72px 55px 90px 55px;
+  border: 3px solid #F57000;
 }
 
 
@@ -194,7 +195,7 @@ iframe {
 .wrap-input2 {
   width: 100%;
   position: relative;
-  border-bottom: 2px solid #adadad;
+  border-bottom: 2px solid #f57000;
   margin-bottom: 37px;
 }
 
@@ -204,7 +205,7 @@ iframe {
 
   font-family: Poppins-Regular;
   font-size: 15px;
-  color: #555555;
+  color: #f57000;
   line-height: 1.2;
 }
 
@@ -449,7 +450,7 @@ textarea.input2 + .focus-input2::after {
 .container-table100 {
   width: 100%;
   min-height: 100vh;
-  background: #d1d1d1;
+  background: #fff;
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -459,7 +460,6 @@ textarea.input2 + .focus-input2::after {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 33px 30px;
 }
 
 .wrap-table100 {
@@ -471,31 +471,25 @@ textarea.input2 + .focus-input2::after {
 table {
   width: 100%;
   background-color: #fff;
+  text-align: center;
 }
 
 th, td {
   font-weight: unset;
-  padding-right: 10px;
 }
 
 .column100 {
   width: 130px;
-  padding-left: 25px;
 }
 
 .column100.column1 {
   width: 265px;
-  padding-left: 42px;
 }
 
 .row100.head th {
-  padding-top: 24px;
-  padding-bottom: 20px;
 }
 
 .row100 td {
-  padding-top: 18px;
-  padding-bottom: 14px;
 }
 
 
@@ -503,7 +497,7 @@ th, td {
 [ Ver1 ]*/
 .table100.ver1 td {
   font-family: Montserrat-Regular;
-  font-size: 14px;
+  font-size: 15px;
   color: #808080;
   line-height: 1.4;
 }
