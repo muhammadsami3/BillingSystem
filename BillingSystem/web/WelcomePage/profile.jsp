@@ -1,9 +1,5 @@
 <%@page import="DataBase.DatabaseHandler"%>
 <%@page import="java.sql.ResultSet"%>
-<<<<<<< HEAD
-=======
-<%@page import="DataBase.DatabaseHandler"%>
->>>>>>> bb1e0f200ccf0394f690cbe0e3427cde85663d60
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
