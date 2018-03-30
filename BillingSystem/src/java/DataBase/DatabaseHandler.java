@@ -247,15 +247,16 @@ public class DatabaseHandler {
         return id;
     } 
     
-    public int addAdded_service(String SeviceName,double cost,String description) {
+    public int addAdded_service(String SeviceName,double cost,String description ,String type) {
         int id = 0;
         
-        String query = "insert into added_service(name , description ,cost) values(?,?,?)";
+        String query = "insert into added_service(name , description ,cost,type) values(?,?,?,?)";
         try {
             preparedStmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStmt.setString(1, SeviceName);                        
             preparedStmt.setString(2, description);
             preparedStmt.setDouble(3, cost);
+            preparedStmt.setString(4, type);
             ResultSet rs1 = preparedStmt.executeQuery();
             rs1.next();
             id = rs.getInt(1);

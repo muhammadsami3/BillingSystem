@@ -52,15 +52,16 @@ public class AddNewServiceInfo extends HttpServlet {
 //        out.println(request.getParameter("serviceType"));
 //        out.println(request.getParameter("description"));
 //        out.println(request.getParameter("cost"));
-        d2.addAdded_service(request.getParameter("serviceName"), Double.parseDouble(request.getParameter("cost")), request.getParameter("description"));
-        
-        if (request.getParameter("serviceType").equals("recurring")) {
-            d2.addRecuring_service("00201022591400", request.getParameter("serviceName"));
-        } else if (request.getParameter("serviceType").equals("onetime")) {
-            d2.addOneTime("00201022591400", request.getParameter("serviceName"));
-        }
-    }
+       d2.addAdded_service(request.getParameter("serviceName"), Double.parseDouble(request.getParameter("cost")), request.getParameter("description"),request.getParameter("serviceType"));
 
+        if (request.getParameter("serviceType").equals("recurring")) {
+            //d2.addRecuring_service("00201022591400", request.getParameter("serviceName"));
+        } else if (request.getParameter("serviceType").equals("onetime")) {
+            //d2.addOneTime("00201022591400", request.getParameter("serviceName"));
+        }
+    response.sendRedirect("/BillingSystem/WelcomePage/home.jsp");
+    }
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
