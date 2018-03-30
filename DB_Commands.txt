@@ -16,7 +16,7 @@ CREATE TABLE Customer (
 CREATE TABLE Contract (
     ID serial   ,
     CustomerID int   ,
-    MSISDN bigint   ,
+    MSISDN text,
     packageID int   ,
     CONSTRAINT pk_Contract PRIMARY KEY (
         ID
@@ -26,10 +26,11 @@ CREATE TABLE Contract (
 CREATE TABLE UDR (
     UDRID serial   ,
     contractID int   ,
-    callingMSISDN bigint   ,
-    calledMSISDN bigint   ,
+    callingMSISDN text,
+    calledMSISDN text,
     cost double precision   ,
-    TimeZone Date   ,
+    TimeZone timestamp,
+    startdate text,
     serviceid int   ,
     unit int   ,
     isBilled boolean   ,
@@ -162,7 +163,6 @@ ALTER TABLE servicePackage ADD CONSTRAINT fk_servicePackage_RatePlaneId FOREIGN 
 
 REFERENCES RatePlane (id) ON DELETE CASCADE;
 
-alter table udr alter column calledmsisdn type text;
 
 
 
@@ -176,5 +176,8 @@ insert into service (name) values('sms');
 
 insert into service (name) values('data');
 
-alter table udr add column startdate text;
+create table invoicing (id serial primary key ,msisdn text,mins bigint,sms bigint,data bigint,finalcost double precision,date timestamp)
+;
+
+
 

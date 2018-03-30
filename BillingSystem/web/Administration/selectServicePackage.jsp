@@ -4,6 +4,7 @@
     Author     : ahmed
 --%>
 
+<%@page import="links.linkto"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
@@ -18,45 +19,44 @@
         <title>Service Package</title>
     </head>
     <body>
-         <form class="modal-content" action="userAddedSuccessfully.jsp?msisdn=" method="Get">
-    <div class="container">
-         <label for="servicepackage"><b>Select Service Package</b></label>
-            
-      <select name ="servicepackage">
-          <%
-               Statement stmt;
-    PreparedStatement prep;
-    ResultSet rs;
-     Connection connect=null;
-     int rateplaneid=0; 
-     int msisdn=0;
+        <form class="modal-content" action="/BillingSystem/Administration/userAddedSuccessfully.jsp" method="Get">
+            <div class="container">
+                <label for="servicepackage"><b>Select Service Package</b></label>
 
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException ex) {
-         
-        }
-        try {
-            connect = DriverManager.getConnection("jdbc:postgresql://localhost:5432/billing", "postgres", "postgre");
-        } catch (SQLException ex) {
-         
-        }
-          rateplaneid = Integer.parseInt(request.getParameter("rateplaneid"));
-          msisdn=Integer.parseInt(request.getParameter("msisdn"));
-          stmt = connect.createStatement();
-            String queryString = new String("Select * from servicepackage where rateplaneid='" + rateplaneid + "';");
-            
-            rs = stmt.executeQuery(queryString);
-            while(rs.next()){
-            out.println("<option value='"+rs.getInt(1)+"'>"+rs.getString(2)+"</option>");
-            }
-          %>
-      </select>
-      
-	  
-    </div>
-      <input type="submit" value="Submit"/>
-  </form>
-	
+                <select name ="servicepackage">
+                    <%
+                        Statement stmt;
+                        PreparedStatement prep;
+                        ResultSet rs;
+                        Connection connect = null;
+                        int rateplaneid = 0;
+                        int msisdn = 0;
+
+                        try {
+                            Class.forName("org.postgresql.Driver");
+                        } catch (ClassNotFoundException ex) {
+
+                        }
+                        try {
+                            connect = DriverManager.getConnection(linkto.DB, linkto.databaseUser, linkto.dbPasswd);
+                        } catch (SQLException ex) {
+
+                        }
+                        rateplaneid = Integer.parseInt(request.getParameter("rateplaneid"));
+                        stmt = connect.createStatement();
+                        String queryString = new String("Select * from servicepackage where rateplaneid='" + rateplaneid + "'");
+
+                        rs = stmt.executeQuery(queryString);
+                        while (rs.next()) {
+                            out.println("<option value='" + rs.getInt(1) + "'>" + rs.getString(2) + "</option>");
+                        }
+                    %>
+                </select>
+
+
+            </div>
+            <input type="submit" value="Submit"/>
+        </form>
+
     </body>
 </html>

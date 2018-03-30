@@ -22,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import links.linkto;
 
 /**
@@ -98,7 +99,9 @@ public class addCustomer extends HttpServlet {
                 }
 
             } else {
-                out.println("This Mobile Number is exist, please enter another one");
+                HttpSession session=request.getSession(true);
+                session.setAttribute("msisdnExist", "t");
+                response.sendRedirect(linkto.addNewCustomer);
 
             }
 
@@ -122,12 +125,10 @@ public class addCustomer extends HttpServlet {
                 rs = prep.executeQuery();
                 rs.next();
                 int Customerid = rs.getInt(1);
-                queryString = new String("Insert into contract(Customerid,msisdn)values(?,?);");
-                prep = connect.prepareStatement(queryString);
-                prep.setInt(1, Customerid);
-                prep.setString(2, msisdn);
-                prep.executeUpdate();
-                response.sendRedirect("selectServicePackage.jsp?msisdn=" + msisdn + "&rateplaneid=" + profile);
+                HttpSession session = request.getSession(true);
+                session.setAttribute("customerid",Customerid);
+                session.setAttribute("msisdn",msisdn);
+                response.sendRedirect(linkto.selectServicePackage+"?msisdn=" + msisdn + "&rateplaneid=" + profile);
             }
         } catch (Exception ex) {
             Logger.getLogger(addCustomer.class.getName()).log(Level.SEVERE, null, ex);

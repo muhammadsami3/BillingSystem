@@ -5,7 +5,7 @@
  */
 package AddInfoAboutService;
 
-import DataBase.DatabaseHandler;
+import DatabaseHandler.DatabaseHandler;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
