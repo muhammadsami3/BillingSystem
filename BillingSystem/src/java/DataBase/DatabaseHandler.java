@@ -4,7 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DatabaseHandler;
+package DataBase;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,6 +20,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import links.linkto;
 
 public class DatabaseHandler {
 
@@ -33,7 +34,7 @@ public class DatabaseHandler {
         rs = null;
         try {
             Class.forName("org.postgresql.Driver");
-            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/billing", "postgres", "1022591400");
+            conn = DriverManager.getConnection(linkto.DB, linkto.databaseUser,linkto.dbPasswd);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException ex) {
