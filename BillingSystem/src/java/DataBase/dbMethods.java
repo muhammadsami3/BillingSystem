@@ -27,12 +27,11 @@ public class dbMethods {
     ResultSet rs;
     static ResultSet rs2;
 
-
     public void connectToDatabase() {
 
         try {
             Class.forName("org.postgresql.Driver");
-            conn = DriverManager.getConnection(linkto.DB, linkto.databaseUser,linkto.dbPasswd);
+            conn = DriverManager.getConnection(linkto.DB, linkto.databaseUser, linkto.dbPasswd);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,30 +47,46 @@ public class dbMethods {
 //        System.out.println("DataBase.dbMethods.main()" + db.getCost(1, "00201022591400"));
 //        System.out.println("DataBase.dbMethods.main()" + db.getcontractid("00201022591400"));
 //        System.out.println("DataBase.dbMethods.main()" + db.getInvoice("00201022591400"));
-        ResultSet resultSet=db.getContractHistory("00201022591400",1);
-        while (resultSet.next()) { 
-            System.out.println("DataBase.dbMethods.main()--> "+resultSet.getString(3));
-            
+        ResultSet resultSet = db.getPackageInfo("00201022591400");
+        while (resultSet.next()) {
+            System.out.println("DataBase.dbMethods.main()--> " + resultSet.getString(3));
+
         }
 //        db.rating("00201022591400", "00201022591400", 50.50, 1, 55555555, "10:10:10");
 //        select();
     }
-    
-   public ResultSet getContractHistory(String msisdn,int serviceid){
-            ResultSet rs = null;
+
+    public ResultSet getPackageInfo(String msisdn) {
+        ResultSet rs = null;
+        try {
+            String queryString = " select * from servicepackage where id =(select packageid from contract where msisdn=?)";
+
+            PreparedStatement stmt = conn.prepareStatement(queryString);
+            stmt.setString(1, msisdn);
+            rs = stmt.executeQuery();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(dbMethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rs;
+
+    }
+
+    public ResultSet getContractHistory(String msisdn, int serviceid) {
+        ResultSet rs = null;
         try {
             String queryString = "select * from udr where callingmsisdn=? and serviceid=?";
 
             PreparedStatement stmt = conn.prepareStatement(queryString);
             stmt.setString(1, msisdn);
             stmt.setInt(2, serviceid);
-             rs = stmt.executeQuery();
-        
+            rs = stmt.executeQuery();
+
         } catch (SQLException ex) {
             Logger.getLogger(dbMethods.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rs;
-    
+
     }
 
     int getcontractid(String msisdn) {
@@ -92,7 +107,7 @@ public class dbMethods {
 
     }
 
-public double getCost(int serviceid, String msisdn) {
+    public double getCost(int serviceid, String msisdn) {
         Double cost = -1.0;
         try {
             String queryString = "select service_cost from service_servicepackage where serviceid =?"
@@ -112,7 +127,7 @@ public double getCost(int serviceid, String msisdn) {
     }
 
     public void rating(String callingmsisdn, String calledmsisdn, Double cost, int serviceid, long unit, String startTime) {
-        System.out.println("DataBase.dbMethods.rating()  "+ callingmsisdn);
+        System.out.println("DataBase.dbMethods.rating()  " + callingmsisdn);
 
         try {
             String queryString = "insert into udr (contractid,callingmsisdn,calledmsisdn,cost,timezone,serviceid,unit,isbilled,startdate) "
@@ -133,15 +148,16 @@ public double getCost(int serviceid, String msisdn) {
         }
 
     }
-     public ResultSet getInvoice(String msisdn) throws SQLException {
+
+    public ResultSet getInvoice(String msisdn) throws SQLException {
         String queryString = "select * from invoicing where msisdn=?";
         PreparedStatement stmt = conn.prepareStatement(queryString);
         stmt.setString(1, msisdn);
         ResultSet rs = stmt.executeQuery();
-        return  rs;
+        return rs;
     }
 
-   void select() throws SQLException {
+    void select() throws SQLException {
         String queryString = "select now();";
         PreparedStatement stmt = conn.prepareStatement(queryString);
         ResultSet rs = stmt.executeQuery();
