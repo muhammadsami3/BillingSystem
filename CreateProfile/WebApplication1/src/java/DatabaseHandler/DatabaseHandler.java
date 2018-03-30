@@ -120,6 +120,34 @@ public class DatabaseHandler {
         return rs;
     }
     
+    
+    public ResultSet getcustomerInfo(String msisdn) {
+        int id = getCustomerId(msisdn);
+        try {
+            String queryString = new String("select * from customer where customerid=?");
+//            String queryString = new String("select * from servicepackage");
+            preparedStmt = conn.prepareStatement(queryString);
+            preparedStmt.setInt(1, id);
+            rs = preparedStmt.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return rs;
+    }
+    
+     public ResultSet getContractInfo(String msisdn) {
+        int id = getCustomerId(msisdn);
+        try {
+            String queryString = new String("select * from contract where customerid=?");
+//            String queryString = new String("select * from servicepackage");
+            preparedStmt = conn.prepareStatement(queryString);
+            preparedStmt.setInt(1, id);
+            rs = preparedStmt.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return rs;
+    }
     public int getServicePackageId(String servicePackageNmae) {
         int id = 0;
         try {
@@ -252,12 +280,12 @@ public class DatabaseHandler {
         return id;
     } 
     
-    public int getCustomerId(long customerNumber) {
+    public int getCustomerId(String customerNumber) {
         int id = 0;
         try {
             String queryString = new String("select customerid from contract where msisdn=? ");
             preparedStmt = conn.prepareStatement(queryString);
-            preparedStmt.setLong(1, customerNumber);
+            preparedStmt.setString(1, customerNumber);
             ResultSet rs1 = preparedStmt.executeQuery();
             rs1.next();
             id = rs1.getInt(1);
@@ -268,12 +296,12 @@ public class DatabaseHandler {
         return id;
     } 
     
-    public int getContractId(long customerNumber) {
+    public int getContractId(String customerNumber) {
         int id = 0;
         try {
-            String queryString = new String("select id from contract where msisdn=? ");
+            String queryString = new String("select * from contract where msisdn=? ");
             preparedStmt = conn.prepareStatement(queryString);
-            preparedStmt.setLong(1, customerNumber);
+            preparedStmt.setString(1, customerNumber);
             ResultSet rs1 = preparedStmt.executeQuery();
             rs1.next();
             id = rs1.getInt(1);
@@ -284,7 +312,22 @@ public class DatabaseHandler {
         return id;
     } 
     
-    public int addRecuring_service(long msisdn,String addService) {
+    public ResultSet getServiceMoreInfo(int packageid) {
+//        int id = getRatePlanId(packageid);
+        try {
+            String queryString = new String("select * from servicepackage where id=?");
+//            String queryString = new String("select * from servicepackage");
+            preparedStmt = conn.prepareStatement(queryString);
+            preparedStmt.setInt(1, packageid);
+            rs = preparedStmt.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return rs;
+    }
+    
+    
+    public int addRecuring_service(String msisdn,String addService) {
         int id = 0;
         int addServiceID=getAdded_serviceId(addService);
         int contractID=getContractId(msisdn);
@@ -302,7 +345,7 @@ public class DatabaseHandler {
         return id;
     }
     
-    public int addOneTime(long msisdn,String addService) {
+    public int addOneTime(String msisdn,String addService) {
         int id = 0;
         int addServiceID=getAdded_serviceId(addService);
         int contract=getContractId(msisdn);
@@ -322,19 +365,27 @@ public class DatabaseHandler {
     
      //insrtcustomer
     public static void main(String[] args) {
-        try {
+//        try {
             DatabaseHandler d =new DatabaseHandler();
 //        d.addRatePlan("coonetc");
 
 //d.addServicePackage("conect","con2",30,40,50, 10);
-ResultSet categories1 = d.getAllServicePackage("");
-categories1.next() ;
-System.out.println(categories1.getString("name"));
-        } catch (SQLException ex) {
-            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//ResultSet categories1 = d.getAllServicePackage("");
+//categories1.next() ;
+//System.out.println(d.getCustomerId("00201115535369"));
+//ResultSet categories2 = d.getcustomerInfo("00201115535369");
+//while(categories2.next()){
+//
+//
+////System.out.println(categories1.getString("name"));
+//System.out.println(categories2.getString("uname"));
+//}
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+//        }
                     
-        
+       
+
     }
    
 }

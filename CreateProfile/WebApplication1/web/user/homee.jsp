@@ -46,6 +46,17 @@ body {margin:0;}
 p.thicker {
     font-weight: 900;
 }
+input:invalid ~ span:after {
+    content: '✖';
+    padding-left: 5px;
+    position: absolute:
+}
+
+input:valid ~ span:after {
+    content: '✓';
+    padding-left: 5px;
+    position: absolute:
+}
 </style>
 `
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -65,8 +76,15 @@ p.thicker {
   <a href="../MainPage.jsp">ADD RATE PLANE</a>
   <a href="#contact">BILL</a>
   <a href="../Rating/p2/index.html">RATE</a>
-  <a href="#news">SEARCH</a>
   <a href="#contact">ADD CUSTOMER</a>
+  <a  style="float:right">
+      <form action="profile.jsp">
+      <input type="search" id="mySearch" name="search"  placeholder="Enter Customer Number" size="30" required minlength="14" maxlength="14">
+      <button>Search</button>
+      <span class="validity"></span>
+      </form>
+    </a>
+  
 </div>
 
 <div class="header" style="width:100% ;height: 600px ">
