@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="AddNewServiceInfo">
+        <form action="/BillingSystem/AddNewServiceInfo">
             Enter Name of The Service:<br>
             <input type="text" name="serviceName" required><br>
             Choose type The Service:<br>

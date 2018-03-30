@@ -99,7 +99,9 @@ public class addCustomer extends HttpServlet {
                 }
 
             } else {
-                out.println("This Mobile Number is exist, please enter another one");
+                HttpSession session=request.getSession(true);
+                session.setAttribute("msisdnExist", "t");
+                response.sendRedirect(linkto.addNewCustomer);
 
             }
 

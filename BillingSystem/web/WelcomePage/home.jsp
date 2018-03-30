@@ -5,7 +5,7 @@
 --%>
 
 
-<%@page import="DataBase.DatabaseHandler"%>
+<%@page import="DatabaseHandler.DatabaseHandler"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../Styling/header_footer/header.html" %>
@@ -68,6 +68,8 @@
         DatabaseHandler dbHandler1 = new DatabaseHandler();
         ResultSet categories1 = dbHandler1.getAllRatePlane();
         while (categories1.next()) {
+            out.println("<br>");
+            out.println("<br>");
             sectionId1++;
             out.println("<div class='card3' style='border-width:5px;  margin:5px; border-style:inset;border-color:#707694;'>");
     %>

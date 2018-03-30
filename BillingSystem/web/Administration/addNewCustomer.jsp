@@ -12,9 +12,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Statement"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
+<%@include file="../Styling/header_footer/header.html" %>
         <title>New Customer</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,6 +26,16 @@
             <div class="container">
                 <h1>New Customer</h1>
                 <p>Please fill in this form to add new Customer.</p>
+                <%
+                    String checkMsisdn = (String) session.getAttribute("msisdnExist");
+                    checkMsisdn = (checkMsisdn == null) ? "" : checkMsisdn;
+                    if (checkMsisdn.equals("t")) {%>
+                    
+                    <p style="color: red">This Number Already Exist</p>
+
+                <%
+        }          %>
+
                 <hr>
                 <label for="msisdn"><b>Mobile Number</b></label>
                 <input type="text" pattern="00201[0-9]{9}" placeholder="Enter Mobile Number ex.00201********* " name="msisdn" required>
