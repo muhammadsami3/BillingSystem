@@ -1,5 +1,9 @@
 <%@page import="DataBase.DatabaseHandler"%>
 <%@page import="java.sql.ResultSet"%>
+<<<<<<< HEAD
+=======
+<%@page import="DataBase.DatabaseHandler"%>
+>>>>>>> bb1e0f200ccf0394f690cbe0e3427cde85663d60
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -18,16 +22,13 @@
         <div class="container">
             <nav>
                 <%
-                    //out.println("hiiiiiii"+request.getParameter("search"));
                     DatabaseHandler db1 = new DatabaseHandler();
                     DatabaseHandler db2 = new DatabaseHandler();
+                    session.setAttribute("msisdn", request.getParameter("search"));
                     ResultSet getcustomerInfo = db1.getcustomerInfo(request.getParameter("search"));
                     ResultSet getServiceInfo = db1.getContractInfo(request.getParameter("search"));
 
                     while (getcustomerInfo.next()) {
-
-                        // }
-
                 %>
             </nav>
             <article>
@@ -72,8 +73,8 @@
 
                     <label for="address"><b>Address : </b></label>
                     <label for="addressValue">
-                        <%                            out.println(getcustomerInfo.getString("address")
-                            );
+                        <%                          
+                            out.println(getcustomerInfo.getString("address"));
 
 
                         %>
@@ -82,13 +83,13 @@
 
                     <label for="rateplane"><b>Rate Plane  : </b></label>
                     <label for="rateplaneValue">
-                        <%                            while (getServiceInfo.next()) {
-                                String pacakge = getServiceInfo.getString("packageid");
-                                //out.println(pacakge);
+                        <%                           
+                            while (getServiceInfo.next()) {
+                            String pacakge = getServiceInfo.getString("packageid");
 
-                                ResultSet getServiceMoreInfo = db2.getServiceMoreInfo(3);
+                            ResultSet getServiceMoreInfo = db2.getServiceMoreInfo(3);
 
-                                while (getServiceMoreInfo.next()) {
+                              while (getServiceMoreInfo.next()) {
                                     out.println(getServiceMoreInfo.getString(3));
                         %>
                         <br/><br/>
@@ -145,6 +146,7 @@
             </article>
         </div>
         <br>
+        <a href="history.jsp"> history </a>
 
 
     </body>

@@ -5,7 +5,6 @@
  */
 package Administration;
 
-import static DataBase.dbMethods.conn;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;

@@ -27,9 +27,6 @@ public class dbMethods {
     ResultSet rs;
     static ResultSet rs2;
 
-    public dbMethods() {
-
-    }
 
     public void connectToDatabase() {
 
@@ -47,17 +44,34 @@ public class dbMethods {
     public static void main(String[] args) throws SQLException {
         dbMethods db = new dbMethods();
         db.connectToDatabase();
-        select();
+        db.select();
 //        System.out.println("DataBase.dbMethods.main()" + db.getCost(1, "00201022591400"));
 //        System.out.println("DataBase.dbMethods.main()" + db.getcontractid("00201022591400"));
 //        System.out.println("DataBase.dbMethods.main()" + db.getInvoice("00201022591400"));
-//        ResultSet resultSet=db.getInvoice("00201022591400");
-//        while (resultSet.next()) { 
-//            System.out.println("DataBase.dbMethods.main()--> "+resultSet.getString(3));
-//            
-//        }
+        ResultSet resultSet=db.getContractHistory("00201022591400",1);
+        while (resultSet.next()) { 
+            System.out.println("DataBase.dbMethods.main()--> "+resultSet.getString(3));
+            
+        }
 //        db.rating("00201022591400", "00201022591400", 50.50, 1, 55555555, "10:10:10");
 //        select();
+    }
+    
+   public ResultSet getContractHistory(String msisdn,int serviceid){
+            ResultSet rs = null;
+        try {
+            String queryString = "select * from udr where callingmsisdn=? and serviceid=?";
+
+            PreparedStatement stmt = conn.prepareStatement(queryString);
+            stmt.setString(1, msisdn);
+            stmt.setInt(2, serviceid);
+             rs = stmt.executeQuery();
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(dbMethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rs;
+    
     }
 
     int getcontractid(String msisdn) {
@@ -127,7 +141,7 @@ public double getCost(int serviceid, String msisdn) {
         return  rs;
     }
 
-    static void select() throws SQLException {
+   void select() throws SQLException {
         String queryString = "select now();";
         PreparedStatement stmt = conn.prepareStatement(queryString);
         ResultSet rs = stmt.executeQuery();
