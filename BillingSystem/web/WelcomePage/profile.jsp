@@ -73,6 +73,49 @@
 
                             ResultSet getServiceMoreInfo = db2.getServiceMoreInfo(3);
 
+<<<<<<< HEAD
+                              
+   
+while (getServiceMoreInfo.next()) {
+%>
+                <label for="address"><b> Name of Service Package</b></label>
+                <input type="text" value="<%=getServiceMoreInfo.getString(2)%>" name="address" required readonly>
+
+                <label for="address"><b> Number of Minutes</b></label>
+                <input type="text" value="<%=getServiceMoreInfo.getString(4)%>" name="address" required>
+                
+                <label for="address"><b> Number of SMS</b></label>
+                <input type="text" value="<%=getServiceMoreInfo.getString(5)%>" name="address" required>
+                
+                <label for="address"><b> Number of Data</b></label>
+                <input type="text" value="<%=getServiceMoreInfo.getString(6)%>" name="address" required>
+                
+                <label for="address"><b>COST</b></label>
+                <input type="text" value="<%=getServiceMoreInfo.getString(7)%>" name="address" required>
+
+                
+                <br>
+                <br>
+                <input class="button" type="submit" style="width: 100%;" value="SHOW HISTORY"/>
+                
+                
+                <a href="/BillingSystem/addRateplan/addNewServiceToCustomer.jsp?msisdn=<%=request.getParameter("search")%>" class="button"  style="width: 100%;" >ADD NEW SERVICE</a>
+                        
+                
+            </div>
+<%
+    
+                                    }
+                                }
+                            }
+                        %>
+                        
+
+        </form>
+        
+    </body>
+</html>
+=======
                             while (getServiceMoreInfo.next()) {
                     %>
                     <label for="address"><b>Rate Plan</b></label>
@@ -110,4 +153,5 @@ response.sendRedirect(location);
                 </form>
                 </body>
                 </html>
+>>>>>>> ebea85ac65521f6617da3307db83fbb87e3ae3c5
 
