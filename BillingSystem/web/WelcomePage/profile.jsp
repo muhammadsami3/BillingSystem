@@ -20,6 +20,7 @@
                     DatabaseHandler db1 = new DatabaseHandler();
                     DatabaseHandler db2 = new DatabaseHandler();
                     DatabaseHandler db3 = new DatabaseHandler();
+                    DatabaseHandler db4 = new DatabaseHandler();
                     session.setAttribute("msisdn", request.getParameter("search"));
                     ResultSet getcustomerInfo = db1.getcustomerInfo(request.getParameter("search"));
                     ResultSet getServiceInfo = db1.getContractInfo(request.getParameter("search"));
@@ -73,49 +74,7 @@
 
                             ResultSet getServiceMoreInfo = db2.getServiceMoreInfo(3);
 
-<<<<<<< HEAD
-                              
-   
-while (getServiceMoreInfo.next()) {
-%>
-                <label for="address"><b> Name of Service Package</b></label>
-                <input type="text" value="<%=getServiceMoreInfo.getString(2)%>" name="address" required readonly>
 
-                <label for="address"><b> Number of Minutes</b></label>
-                <input type="text" value="<%=getServiceMoreInfo.getString(4)%>" name="address" required>
-                
-                <label for="address"><b> Number of SMS</b></label>
-                <input type="text" value="<%=getServiceMoreInfo.getString(5)%>" name="address" required>
-                
-                <label for="address"><b> Number of Data</b></label>
-                <input type="text" value="<%=getServiceMoreInfo.getString(6)%>" name="address" required>
-                
-                <label for="address"><b>COST</b></label>
-                <input type="text" value="<%=getServiceMoreInfo.getString(7)%>" name="address" required>
-
-                
-                <br>
-                <br>
-                <input class="button" type="submit" style="width: 100%;" value="SHOW HISTORY"/>
-                
-                
-                <a href="/BillingSystem/addRateplan/addNewServiceToCustomer.jsp?msisdn=<%=request.getParameter("search")%>" class="button"  style="width: 100%;" >ADD NEW SERVICE</a>
-                        
-                
-            </div>
-<%
-    
-                                    }
-                                }
-                            }
-                        %>
-                        
-
-        </form>
-        
-    </body>
-</html>
-=======
                             while (getServiceMoreInfo.next()) {
                     %>
                     <label for="address"><b>Rate Plan</b></label>
@@ -135,11 +94,39 @@ while (getServiceMoreInfo.next()) {
 
                     <label for="address"><b>COST</b></label>
                     <input type="text" value="<%=getServiceMoreInfo.getString(7)%>" name="address" readonly>
-
+                    <%
+                         ResultSet getallRService = db4.getAllrecuring_service(request.getParameter("search"));
+                         while(getallRService.next()){
+                             %>
+                    <label for="address"><b>Recurring Service name</b></label>
+                    <input type="text" value="<%=getallRService.getString("name")%>" name="address" readonly>
+                    <label for="address"><b>Description</b></label>
+                    <input type="text" value="<%=getallRService.getString("description")%>" name="address" readonly>
+                    <label for="address"><b>Cost</b></label>
+                    <input type="text" value="<%=getallRService.getString("cost")%>" name="address" readonly>
+                    
+                         <%
+                         }
+                        %>
+                        <%
+                         ResultSet getallOService = db4.getAllonetime_fee_service(request.getParameter("search"));
+                         while(getallOService.next()){
+                             %>
+                    <label for="address"><b>One Time Service name</b></label>
+                    <input type="text" value="<%=getallOService.getString("name")%>" name="address" readonly>
+                    <label for="address"><b>Description</b></label>
+                    <input type="text" value="<%=getallOService.getString("description")%>" name="address" readonly>
+                    <label for="address"><b>Cost</b></label>
+                    <input type="text" value="<%=getallOService.getString("cost")%>" name="address" readonly>
+                    
+                         <%
+                         }
+                        %>
 
                     <br>
                     <br>
                     <input class="button" type="submit" style="width: 100%;" value="SHOW HISTORY"/>
+                     <a href="/BillingSystem/addRateplan/addNewServiceToCustomer.jsp?msisdn=<%=request.getParameter("search")%>" class="button"  style="width: 100%;" >ADD NEW SERVICE</a>
                 </div>
                 <%
 
@@ -150,5 +137,5 @@ while (getServiceMoreInfo.next()) {
                 </form>
                 </body>
                 </html>
->>>>>>> ebea85ac65521f6617da3307db83fbb87e3ae3c5
+
 

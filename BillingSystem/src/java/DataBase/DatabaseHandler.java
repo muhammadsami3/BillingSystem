@@ -284,6 +284,22 @@ public class DatabaseHandler {
         return id;
     } 
     
+    public int getAdded_serviceName(int serviceNmaeID) {
+        int id = 0;
+        try {
+            String queryString = new String("select name from added_service where id=? ");
+            preparedStmt = conn.prepareStatement(queryString);
+            preparedStmt.setInt(1, serviceNmaeID);
+            ResultSet rs1 = preparedStmt.executeQuery();
+            rs1.next();
+            id = rs1.getInt(1);
+            return id;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return id;
+    }
+    
     public int getCustomerId(String customerNumber) {
         int id = 0;
         try {
@@ -365,6 +381,46 @@ public class DatabaseHandler {
             System.out.println(e.getMessage());
         }
         return id;
+    }
+    
+    public ResultSet getAllAddedServiceForContarct() {
+//        int id = getRatePlanId(packageid);
+        try {
+            String queryString = new String("select * from added_service");
+//            String queryString = new String("select * from servicepackage");
+            preparedStmt = conn.prepareStatement(queryString);
+//            preparedStmt.setInt(1, packageid);
+            rs = preparedStmt.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return rs;
+    }
+    public ResultSet getAllonetime_fee_service(String msisdn) {
+ int id = getContractId(msisdn);
+        try {
+            String queryString = new String("select * from added_service where id in(select added_serviceid from onetime_fee_service where contractid=?);");
+//            String queryString = new String("select * from servicepackage");
+            preparedStmt = conn.prepareStatement(queryString);
+            preparedStmt.setInt(1, id);
+            rs = preparedStmt.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return rs;
+    }
+    public ResultSet getAllrecuring_service(String msisdn) {
+        int id = getContractId(msisdn);
+        try {
+            String queryString = new String(" select * from added_service where id in(select added_service_id from recuring_service where contract_id=?)");
+//            String queryString = new String("select * from servicepackage");
+            preparedStmt = conn.prepareStatement(queryString);
+            preparedStmt.setInt(1, id);
+            rs = preparedStmt.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return rs;
     }
     
      //insrtcustomer

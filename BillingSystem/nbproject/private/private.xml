@@ -1,40 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
-        <file>
-            <url>web/Invoicing/outputPDF/output.jsp</url>
-            <bookmark id="1">
-                <name/>
-                <line>42</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/home.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/ratePlaneIntro.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/rateplanecss.css</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/Administration/addCustomer.java</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/homePage.css</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/table/tablecss.css</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/AddInfoAboutService/AddInfo.java</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/main.css</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/links/linkto.java</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/table/showServicePackage.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/AddNewService/AddNewServiceInfo.java</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/profile.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/ServicePackage.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/MainPage.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/userAddedSuccessfully.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/addNewCustomer.css</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/addNewService.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/selectServicePackage.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/header_footer/header.html</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/DataBase/DatabaseHandler.java</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/addNewCustomer.jsp</file>
-        </group>
         <group name="web service">
             <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/profile.jsp</file>
             <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/src/java/DataBase/DatabaseHandler.java</file>
@@ -57,6 +24,18 @@
             <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/history.jsp</file>
             <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Invoicing/outputPDF/output.jsp</file>
             <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/home.jsp</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/profile.jsp</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/home.jsp</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/addNewServiceToCustomer.jsp</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/addNewCustomer.css</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/AddInfoAboutService/AddInfo.java</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/addNewService.jsp</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/main.css</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/DataBase/DatabaseHandler.java</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/addNewCustomer.jsp</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/AddNewService/AddNewServiceInfo.java</file>
         </group>
     </open-files>
 </project-private>
