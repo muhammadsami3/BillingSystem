@@ -23,14 +23,14 @@
 %>
 
 <div class="limiter">
-    <div class="container-table100">
+    <div class="container-table100" style="margin-top: 69px;">
         <div class="wrap-table100">
             <div class="table100 ver1 m-b-110">
                 <table data-vertable="ver1">
                     <thead>
                         <tr class="row100 head">     
                             <th class="column100 column2" data-column="column2" colspan="5"
-                                style="text-align: center;border-bottom: 1px solid;">Call History</th>
+                                style="text-align: center;">Call History</th>
                         </tr>
 
 
@@ -114,7 +114,7 @@
                     <thead>
                         <tr class="row100 head">     
                             <th class="column100 column2" data-column="column2" colspan="5"
-                                style="text-align: center; border-bottom: 1px solid;">Data Usage History</th>
+                                style="text-align: center; border-bottom: 1px solid;">SMS History</th>
                         </tr>
 
 

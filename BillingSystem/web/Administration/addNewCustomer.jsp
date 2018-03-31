@@ -38,7 +38,7 @@
 
                 <hr>
                 <label for="msisdn"><b>Mobile Number</b></label>
-                <input type="text" pattern="00201[0-9]{9}" placeholder="Enter Mobile Number ex.00201********* " name="msisdn" required>
+                <input type="text" pattern="00201[0-9]{9}" placeholder="Enter Mobile Number ex.00201xxxxxxxxx " name="msisdn" required>
 
                 <label for="fname"><b>First Name</b></label>
                 <input type="text" placeholder="Enter First Name" name="fname" required>
