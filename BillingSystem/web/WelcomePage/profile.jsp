@@ -98,7 +98,7 @@
                          ResultSet getallRService = db4.getAllrecuring_service(request.getParameter("search"));
                          while(getallRService.next()){
                              %>
-                    <label for="address"><b>Recurring Service name</b></label>
+                             <label for="address"><font color="red"><b>Recurring Service name</b></font></label>
                     <input type="text" value="<%=getallRService.getString("name")%>" name="address" readonly>
                     <label for="address"><b>Description</b></label>
                     <input type="text" value="<%=getallRService.getString("description")%>" name="address" readonly>
@@ -112,7 +112,7 @@
                          ResultSet getallOService = db4.getAllonetime_fee_service(request.getParameter("search"));
                          while(getallOService.next()){
                              %>
-                    <label for="address"><b>One Time Service name</b></label>
+                    <label for="address"><font color="red"><b>One Time Service name</b></font></label>
                     <input type="text" value="<%=getallOService.getString("name")%>" name="address" readonly>
                     <label for="address"><b>Description</b></label>
                     <input type="text" value="<%=getallOService.getString("description")%>" name="address" readonly>
@@ -127,6 +127,7 @@
                     <br>
                     <input class="button" type="submit" style="width: 100%;" value="SHOW HISTORY"/>
                      <a href="/BillingSystem/addRateplan/addNewServiceToCustomer.jsp?msisdn=<%=request.getParameter("search")%>" class="button"  style="width: 100%;" >ADD NEW SERVICE</a>
+                     <a href="/BillingSystem/addRateplan/ShowAddedServices/ShowAddedServices.jsp?msisdn=<%=request.getParameter("search")%>" class="button"  style="width: 100%;" >DELETE ADDED SERVICE</a>
                 </div>
                 <%
 
