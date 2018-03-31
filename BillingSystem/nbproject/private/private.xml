@@ -1,66 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>web/Invoicing/outputPDF/output.jsp</url>
+            <bookmark id="1">
+                <name/>
+                <line>42</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="web service">
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/addNewServiceProcess.jsp</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/images/bg_1.jpg</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/src/java/links/linkto.java</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/header_footer/header.html</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/ratePlaneIntro.jsp</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/addNewCustomer.jsp</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/ServicePacakge.jsp</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/images/bg.jpg</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/CreateRatePalne.jsp</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/images/securitypolicy.jpg</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/images/1.jpg</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/home.jsp</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/images/LOGO.jpg</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/WEB-INF/web.xml</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/WelcomePage.jsp</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/addServices.jsp</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/MainPage.jsp</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/header_footer/footer.html</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Rating/ratePage.jsp</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Rating/StoreCDR.jsp</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/home.html</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Rating/upload.jsp</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/homePage.css</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/userAddedSuccessfully.jsp</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/main.css</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/images/img-01.png</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/images/bg-01.jpg</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/src/java/Administration/addCustomer.java</file>
-            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/selectServicePackage.jsp</file>
-        </group>
         <group>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Rating/StoreCDR.jsp</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/home.jsp</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/ratePlaneIntro.jsp</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/rateplanecss.css</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/Administration/addCustomer.java</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/homePage.css</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/table/tablecss.css</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/databaseCommands/command</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/main.css</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Rating/ratePage.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/addNewCustomer.css</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/addNewService.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/home.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/ratePlaneIntro.jsp</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/AddInfoAboutService/AddInfo.java</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/main.css</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/links/linkto.java</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/table/showServicePackage.jsp</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/AddNewService/AddNewServiceInfo.java</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/profile.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Invoicing/outputPDF/output.jsp</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/nbproject/build-impl.xml</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/ServicePackage.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Rating/upload.jsp</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/MainPage.jsp</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/userAddedSuccessfully.jsp</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/addNewCustomer.css</file>
+            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/addNewService.jsp</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/selectServicePackage.jsp</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/header_footer/header.html</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/src/java/DataBase/DatabaseHandler.java</file>
             <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/addNewCustomer.jsp</file>
-            <file>file:/C:/Users/AZIZ/Documents/GitHub/BillingSystem/BillingSystem/web/WEB-INF/web.xml</file>
+        </group>
+        <group name="web service">
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/profile.jsp</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/src/java/DataBase/DatabaseHandler.java</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Invoicing/outputPDF/LOGO.jpg</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/src/java/DataBase/dbMethods.java</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/src/java/AddInfoAboutService/AddInfo.java</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/header_footer/footer.html</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/rateplanecss.css</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/src/java/links/linkto.java</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Invoicing/outputPDF/1.jpg</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Rating/ratePage.jsp</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/header_footer/header.html</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/ratePlaneIntro.jsp</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Rating/StoreCDR.jsp</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Administration/addNewCustomer.jsp</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/vendor/animate/animate.css</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/main.css</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/addRateplan/ServicePackage.jsp</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Styling/css/util.css</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/history.jsp</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/Invoicing/outputPDF/output.jsp</file>
+            <file>file:/E:/Muhammad%20Sami/Documents/GitHub/BillingSystem/BillingSystem/web/WelcomePage/home.jsp</file>
         </group>
     </open-files>
 </project-private>

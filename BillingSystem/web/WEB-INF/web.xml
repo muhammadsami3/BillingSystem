@@ -34,7 +34,7 @@
         <description>Location to store uploaded file</description> 
         <param-name>file-upload</param-name> 
         <param-value>
-         C:\Users\AZIZ\Desktop\apache-tomcat-9.0.5\
+         e:\
         </param-value> 
     </context-param>
 </web-app>

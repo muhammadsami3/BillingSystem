@@ -57,19 +57,6 @@
     </div>
     
 </div>
-<!--        <h3>Categories</h3>
-        <div class="fakeimg"><a href="#C1"  style="float:left">
-                <!input type="image"  id="catImg1" src="Img/mobileCat.png" alt="Submit"-- >Mobiles</a></div>
-        <div class="fakeimg"><a href="#C2"  style="float:left"><!input type="image"  id="catImg2" src="Img/laptops.png" alt="Submit"-- >Laptops</a></div>
-        <div class="fakeimg"><a href="#C3"  style="float:left"><!input type="image"  id="catImg3" src="Img/cameraCat.png" alt="Submit"-- >Cameras</a></div>-->
-    
-        
-    
-<!--    <div class="card">
-        <h3>Follow Me</h3>
-        <p>Some text..</p>
-    </d-->
-
         
 
 

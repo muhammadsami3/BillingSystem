@@ -40,7 +40,7 @@
     int eMints = Integer.parseInt(rs.getString("mins")) - Integer.parseInt(PackageResultSet.getString("numberofminutes"));
     int eSMS = Integer.parseInt(rs.getString("sms")) - Integer.parseInt(PackageResultSet.getString("numberofsms"));
     int eDATA = Integer.parseInt(rs.getString("data")) - Integer.parseInt(PackageResultSet.getString("numberofdata"));
-    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("/text9.pdf"));
+    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("e:\\text2.pdf"));
     document.open();
     Image image = Image.getInstance("/1.jpg");
     Image image1 = Image.getInstance("/LOGO.jpg");
@@ -53,15 +53,13 @@
     image2.scalePercent(50, 50);
 
     Paragraph title1 = new Paragraph("Welcome To Our Company", FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLDITALIC, new CMYKColor(0, 255, 255, 17)));
-    title1.setSpacingBefore(50);
-    title1.setSpacingAfter(5);
-    Paragraph packagename = new Paragraph("your package is " + PackageResultSet.getString("name"), FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLDITALIC, new CMYKColor(0, 255, 255, 17)));
-
+    Paragraph packagename = new Paragraph("Service package : " + PackageResultSet.getString("name"), FontFactory.getFont(FontFactory.HELVETICA, 14, Font.BOLDITALIC, new CMYKColor(0, 255, 255, 17)));
     title1.setAlignment(Element.ALIGN_CENTER);
-    Paragraph title11 = new Paragraph("Voice Service Costs",
-            FontFactory.getFont(FontFactory.HELVETICA, 16, Font.BOLD,
+    Paragraph title11 = new Paragraph("Voice Service ",
+            FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD,
                     new CMYKColor(0, 255, 255, 17)));
     Chapter chapter1 = new Chapter(title1, 1);
+   chapter1.add(packagename);
     chapter1.setNumberDepth(0);
     Section section1 = chapter1.addSection(title11);
 
@@ -75,32 +73,30 @@
     PdfPCell c2 = new PdfPCell(new Phrase(rs.getString("mins")));
     t.addCell(c2);
 
-    t.addCell("Cost of the Service");
+    t.addCell("Cost/minute");
     t.addCell(String.valueOf(voiceCost));
 
-    t.addCell("Free Unit of the service");
+    t.addCell("Free Unit");
     t.addCell(PackageResultSet.getString("numberofminutes"));
 
     t.addCell("Extra units");
     t.addCell(String.valueOf(eMints));
 
-    t.addCell("Total of Money of this service");
+    t.addCell("Total cost");
     t.addCell(String.valueOf(eMints*voiceCost+"  E£"));
 
     section1.add(t);
 
-    Paragraph title12 = new Paragraph("SMS Service Costs",
-            FontFactory.getFont(FontFactory.HELVETICA, 16, Font.BOLD,
-                    new CMYKColor(0, 255, 255, 17)));
-//Chapter chapter2 = new Chapter(title1, 2);
-//chapter2.setNumberDepth(1);
+    Paragraph title12 = new Paragraph("SMS",
+            FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD,
+                    new CMYKColor(0, 100, 0, 2)));
     Section section2 = chapter1.addSection(title12);
 
     PdfPTable t2 = new PdfPTable(2);
     t2.setSpacingBefore(25);
     t2.setSpacingAfter(25);
 
-    PdfPCell c3 = new PdfPCell(new Phrase("SMS you Made "));
+    PdfPCell c3 = new PdfPCell(new Phrase("SMS "));
     t2.addCell(c3);
 
     PdfPCell c4 = new PdfPCell(new Phrase(rs.getString("sms")));
@@ -120,8 +116,8 @@
 
     section2.add(t2);
 
-    Paragraph title13 = new Paragraph("Data Service Costs",
-            FontFactory.getFont(FontFactory.HELVETICA, 16, Font.BOLD,
+    Paragraph title13 = new Paragraph("Data ",
+            FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD,
                     new CMYKColor(0, 255, 255, 17)));
 //Chapter chapter3 = new Chapter(title1, 3);
 //chapter3.setNumberDepth(2);
@@ -131,17 +127,17 @@
     t3.setSpacingBefore(25);
     t3.setSpacingAfter(25);
 
-    PdfPCell c5 = new PdfPCell(new Phrase("Data Usage "));
+    PdfPCell c5 = new PdfPCell(new Phrase(" Usage "));
     t3.addCell(c5);
 
-    PdfPCell c6 = new PdfPCell(new Phrase(rs.getString("data")));
+    PdfPCell c6 = new PdfPCell(new Phrase(rs.getString("data")+" M") );
     t3.addCell(c6);
 
-    t3.addCell("Cost of the Service");
+    t3.addCell("Cost/Byte");
     t3.addCell(String.valueOf(dataCost));
 
-    t3.addCell("Free Unit of the service");
-    t3.addCell(PackageResultSet.getString("numberofdata"));
+    t3.addCell("Free Unit");
+    t3.addCell(PackageResultSet.getString("numberofdata")+" M");
     t3.addCell("Extra units");
     t3.addCell(String.valueOf(eDATA));
     
@@ -149,13 +145,25 @@
     t3.addCell(String.valueOf(eDATA*dataCost+"  E£"));
 
     section3.add(t3);
-
-    double total =eDATA*dataCost+eMints*voiceCost+eSMS*smsCost;
-    Paragraph title2 = new Paragraph("Total Anmount OF Money To Pay : " + total+"  E£",
-            FontFactory.getFont(FontFactory.HELVETICA, 16, Font.BOLD,
+Paragraph title14 = new Paragraph("Recuring service ",
+            FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD,
                     new CMYKColor(0, 255, 255, 17)));
-    Section section4 = chapter1.addSection(title2);
+    Section section4 = chapter1.addSection(title14);
 
+    PdfPTable t4 = new PdfPTable(1);
+    t4.setSpacingBefore(5);
+    t4.setSpacingAfter(5);
+
+    PdfPCell c7 = new PdfPCell(new Phrase(" Usage "));
+    t4.addCell(c7);
+
+
+    t4.addCell("Cost/Byte");
+    t4.addCell(String.valueOf(dataCost));
+
+ 
+
+    section4.add(t4);
 
 %>
 

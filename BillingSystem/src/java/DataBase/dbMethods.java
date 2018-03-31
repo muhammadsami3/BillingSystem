@@ -47,9 +47,9 @@ public class dbMethods {
 //        System.out.println("DataBase.dbMethods.main()" + db.getCost(1, "00201022591400"));
 //        System.out.println("DataBase.dbMethods.main()" + db.getcontractid("00201022591400"));
 //        System.out.println("DataBase.dbMethods.main()" + db.getInvoice("00201022591400"));
-        ResultSet resultSet = db.getPackageInfo("00201022591400");
+        ResultSet resultSet = db.getRatePlaneInfo("00201022591400");
         while (resultSet.next()) {
-            System.out.println("DataBase.dbMethods.main()--> " + resultSet.getString(3));
+            System.out.println("DataBase.dbMethods.main()--> " + resultSet.getString(1));
 
         }
 //        db.rating("00201022591400", "00201022591400", 50.50, 1, 55555555, "10:10:10");
@@ -60,6 +60,21 @@ public class dbMethods {
         ResultSet rs = null;
         try {
             String queryString = " select * from servicepackage where id =(select packageid from contract where msisdn=?)";
+
+            PreparedStatement stmt = conn.prepareStatement(queryString);
+            stmt.setString(1, msisdn);
+            rs = stmt.executeQuery();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(dbMethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rs;
+
+    }
+     public ResultSet getRatePlaneInfo(String msisdn) {
+        ResultSet rs = null;
+        try {
+            String queryString = " select * from rateplane where id =(select rateplaneid from servicepackage where id =(select packageid from contract where msisdn=?))";
 
             PreparedStatement stmt = conn.prepareStatement(queryString);
             stmt.setString(1, msisdn);
