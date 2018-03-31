@@ -382,6 +382,22 @@ public class DatabaseHandler {
         return id;
     }
     
+    public int deleteRecuriingforUSer(int serviceid) {
+        int id = 0;
+        
+        String query = "delete from recuring_service where added_service_id=?";
+        try {
+            preparedStmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            preparedStmt.setInt(1, serviceid);                        
+            ResultSet rs1 = preparedStmt.executeQuery();
+            rs1.next();
+            id = rs.getInt(1);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return id;
+    }
+    
     public ResultSet getAllAddedServiceForContarct() {
 //        int id = getRatePlanId(packageid);
         try {
