@@ -128,7 +128,6 @@ public class DatabaseHandler {
         int id = getCustomerId(msisdn);
         try {
             String queryString = new String("select * from customer where customerid=?");
-//            String queryString = new String("select * from servicepackage");
             preparedStmt = conn.prepareStatement(queryString);
             preparedStmt.setInt(1, id);
             rs = preparedStmt.executeQuery();
