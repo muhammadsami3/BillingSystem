@@ -12,7 +12,8 @@
 
 <%
     String msisdn = (String) session.getAttribute("msisdn");
-    msisdn = "00201022591400";
+    String name = (String) session.getAttribute("name");
+    msisdn = (msisdn==null)?"00201022591400":msisdn;
     dbMethods db = new dbMethods();
     db.connectToDatabase();
     ResultSet rscall = db.getContractHistory(msisdn, 1);
@@ -32,7 +33,6 @@
                             <th class="column100 column2" data-column="column2" colspan="5"
                                 style="text-align: center;">Call History</th>
                         </tr>
-
 
                         <tr class="row100 head">
                             <th class="column100 column2" data-column="column2">Dial B</th>

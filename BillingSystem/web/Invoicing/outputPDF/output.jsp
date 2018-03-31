@@ -40,7 +40,7 @@
     int eMints = Integer.parseInt(rs.getString("mins")) - Integer.parseInt(PackageResultSet.getString("numberofminutes"));
     int eSMS = Integer.parseInt(rs.getString("sms")) - Integer.parseInt(PackageResultSet.getString("numberofsms"));
     int eDATA = Integer.parseInt(rs.getString("data")) - Integer.parseInt(PackageResultSet.getString("numberofdata"));
-    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("/text9.pdf"));
+    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("e:\\text14.pdf"));
     document.open();
     Image image = Image.getInstance("/1.jpg");
     Image image1 = Image.getInstance("/LOGO.jpg");
@@ -53,15 +53,13 @@
     image2.scalePercent(50, 50);
 
     Paragraph title1 = new Paragraph("Welcome To Our Company", FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLDITALIC, new CMYKColor(0, 255, 255, 17)));
-    title1.setSpacingBefore(50);
-    title1.setSpacingAfter(5);
-    Paragraph packagename = new Paragraph("your package is " + PackageResultSet.getString("name"), FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLDITALIC, new CMYKColor(0, 255, 255, 17)));
-
+    Paragraph packagename = new Paragraph("Service package : " + PackageResultSet.getString("name"), FontFactory.getFont(FontFactory.HELVETICA, 14, Font.BOLDITALIC, new CMYKColor(0, 255, 255, 17)));
     title1.setAlignment(Element.ALIGN_CENTER);
     Paragraph title11 = new Paragraph("Voice Service Costs",
-            FontFactory.getFont(FontFactory.HELVETICA, 16, Font.BOLD,
+            FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD,
                     new CMYKColor(0, 255, 255, 17)));
     Chapter chapter1 = new Chapter(title1, 1);
+   chapter1.add(packagename);
     chapter1.setNumberDepth(0);
     Section section1 = chapter1.addSection(title11);
 
@@ -90,10 +88,8 @@
     section1.add(t);
 
     Paragraph title12 = new Paragraph("SMS Service Costs",
-            FontFactory.getFont(FontFactory.HELVETICA, 16, Font.BOLD,
-                    new CMYKColor(0, 255, 255, 17)));
-//Chapter chapter2 = new Chapter(title1, 2);
-//chapter2.setNumberDepth(1);
+            FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD,
+                    new CMYKColor(0, 100, 0, 2)));
     Section section2 = chapter1.addSection(title12);
 
     PdfPTable t2 = new PdfPTable(2);
@@ -121,7 +117,7 @@
     section2.add(t2);
 
     Paragraph title13 = new Paragraph("Data Service Costs",
-            FontFactory.getFont(FontFactory.HELVETICA, 16, Font.BOLD,
+            FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD,
                     new CMYKColor(0, 255, 255, 17)));
 //Chapter chapter3 = new Chapter(title1, 3);
 //chapter3.setNumberDepth(2);
@@ -152,9 +148,10 @@
 
     double total =eDATA*dataCost+eMints*voiceCost+eSMS*smsCost;
     Paragraph title2 = new Paragraph("Total Anmount OF Money To Pay : " + total+"  E£",
-            FontFactory.getFont(FontFactory.HELVETICA, 16, Font.BOLD,
+            FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD,
                     new CMYKColor(0, 255, 255, 17)));
     Section section4 = chapter1.addSection(title2);
+    section4.addSection(packagename);
 
 
 %>

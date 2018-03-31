@@ -31,14 +31,18 @@
                 <div class="cont">
                     <label for="username"><b>User Name : </b></label>
                     <label for="usernameValue">
-                        <%                            out.println(getcustomerInfo.getString("uname"));
+                        <%  
+                            session.setAttribute("name",getcustomerInfo.getString("fname") +" "+ getcustomerInfo.getString("lname"));
+                            out.println(getcustomerInfo.getString("uname"));
+                        
 
                         %>
                     </label>
                     <br/><br/><!--
                     -->                 <label for="firstname"><b>First Name : </b></label>
                     <label for="firstnameValue">
-                        <%                            out.println(getcustomerInfo.getString("fname"));
+                        <%                            
+                            out.println(getcustomerInfo.getString("fname"));
 
                         %>
                     </label>
@@ -69,8 +73,7 @@
 
                     <label for="address"><b>Address : </b></label>
                     <label for="addressValue">
-                        <%                          
-                            out.println(getcustomerInfo.getString("address"));
+                        <%                            out.println(getcustomerInfo.getString("address"));
 
 
                         %>
@@ -79,13 +82,12 @@
 
                     <label for="rateplane"><b>Rate Plane  : </b></label>
                     <label for="rateplaneValue">
-                        <%                           
-                            while (getServiceInfo.next()) {
-                            String pacakge = getServiceInfo.getString("packageid");
+                        <%                            while (getServiceInfo.next()) {
+                                String pacakge = getServiceInfo.getString("packageid");
 
-                            ResultSet getServiceMoreInfo = db2.getServiceMoreInfo(3);
+                                ResultSet getServiceMoreInfo = db2.getServiceMoreInfo(3);
 
-                              while (getServiceMoreInfo.next()) {
+                                while (getServiceMoreInfo.next()) {
                                     out.println(getServiceMoreInfo.getString(3));
                         %>
                         <br/><br/>
