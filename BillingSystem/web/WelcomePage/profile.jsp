@@ -127,6 +127,7 @@
                     <br>
                     <br>
                     <input class="button" type="submit" style="width: 100%;" value="SHOW HISTORY"/>
+                     <a href="invoices.jsp" class="button"  style="width: 100%;" >Show Customer Invoices</a>
                      <a href="/BillingSystem/addRateplan/addNewServiceToCustomer.jsp?msisdn=<%=request.getParameter("search")%>" class="button"  style="width: 100%;" >ADD NEW SERVICE</a>
                      <a href="/BillingSystem/addRateplan/ShowAddedServices/ShowAddedServices.jsp?msisdn=<%=request.getParameter("search")%>" class="button"  style="width: 100%;" >DELETE ADDED SERVICE</a>
                 </div>

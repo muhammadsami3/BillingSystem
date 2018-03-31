@@ -120,3 +120,4 @@
     
 </body>
 </html>
+<%@include file="../Styling/header_footer/footer.html" %>
