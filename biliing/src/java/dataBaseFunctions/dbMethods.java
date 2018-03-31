@@ -122,6 +122,7 @@ public class dbMethods {
         stmt1.setInt(2, mins);
         stmt1.setInt(3, sms);
         stmt1.setInt(4,data);
+        stmt1.setDouble(5,finalcost);
         
         
         stmt1.execute();

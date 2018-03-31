@@ -5,8 +5,12 @@
  */
 package billpackage;
 
+import dataBaseFunctions.dbMethods;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +36,7 @@ public class bill_invoice extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
+           /* out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet bill_invoice</title>");            
@@ -40,7 +44,18 @@ public class bill_invoice extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet bill_invoice at " + request.getContextPath() + "</h1>");
             out.println("</body>");
-            out.println("</html>");
+            out.println("</html>");*/
+           
+            String msisdn="01000501441";
+           
+           dbMethods.connectToDatabase();
+           dbMethods obj=new dbMethods();
+           
+            try {
+                obj.bill(msisdn);
+            } catch (SQLException ex) {
+                Logger.getLogger(bill_invoice.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
