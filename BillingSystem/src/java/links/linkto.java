@@ -11,7 +11,7 @@ package links;
  */
 public class linkto {
     static public String home ="";
-    static public String DB ="jdbc:postgresql://localhost:5932/billing";
+    static public String DB ="jdbc:postgresql://localhost:5432/billing";
     static public String databaseUser ="postgres";
     static public String dbPasswd ="147596382";
     static public String cssutil ="/BillingSystem/Styling/css/util.css";

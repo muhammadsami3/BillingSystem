@@ -19,7 +19,7 @@
         
         <%
             
-         String filePath =(String) session.getAttribute("path");
+         String filePath =request.getParameter("path");
         File downloadFile = new File(filePath);
         FileInputStream inStream = new FileInputStream(downloadFile);
          

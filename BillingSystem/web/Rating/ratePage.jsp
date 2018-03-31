@@ -39,6 +39,7 @@
                 
               <p style="color: green;padding-left: 41%;padding-top: 12px;">Rated Successfully   <i class="fa fa-check-circle" style="font-size:20px;color:green"></i> </p>
             <%
+                session.setAttribute("stored", "");
                 }
 
             %>

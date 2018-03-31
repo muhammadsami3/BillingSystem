@@ -258,5 +258,7 @@ title16.setAlignment(Element.ALIGN_CENTER);
     writer.getDirectContent().addImage(image1);
     writer.getDirectContent().addImage(image2);
     document.close();
-    response.sendRedirect("/BillingSystem/Invoicing/outputPDF/fileDownload.jsp");
+    
+    db.invoice_record(msisdn, (String)session.getAttribute("path"), cost);
+    response.sendRedirect("/BillingSystem/Invoicing/outputPDF/fileDownload.jsp?path="+(String)session.getAttribute("path"));
 %>

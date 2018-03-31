@@ -44,6 +44,7 @@ public class dbMethods {
         dbMethods db = new dbMethods();
         db.connectToDatabase();
         db.select();
+        db.invoice_record("000000","455", 55.0);
 //        System.out.println("DataBase.dbMethods.main()" + db.getCost(1, "00201022591400"));
 //        System.out.println("DataBase.dbMethods.main()" + db.getcontractid("00201022591400"));
 //        System.out.println("DataBase.dbMethods.main()" + db.getInvoice("00201022591400"));
@@ -71,7 +72,8 @@ public class dbMethods {
         return rs;
 
     }
-     public ResultSet getRatePlaneInfo(String msisdn) {
+
+    public ResultSet getRatePlaneInfo(String msisdn) {
         ResultSet rs = null;
         try {
             String queryString = " select * from rateplane where id =(select rateplaneid from servicepackage where id =(select packageid from contract where msisdn=?))";
@@ -170,6 +172,34 @@ public class dbMethods {
         stmt.setString(1, msisdn);
         ResultSet rs = stmt.executeQuery();
         return rs;
+    }
+     public ResultSet getInvoiceRecord(String msisdn) throws SQLException {
+        String queryString = " SELECT * FROM invoice_record where msisdn_number=?";
+        PreparedStatement stmt = conn.prepareStatement(queryString);
+        stmt.setString(1, msisdn);
+        ResultSet rs = stmt.executeQuery();
+        return rs;
+    }
+   
+
+    public void invoice_record(String msisdn, String path, Double cost) {
+        System.out.println("DataBase.dbMethods.rating()  " + msisdn);
+
+        try {
+            String queryString = "insert into invoice_record (msisdn_number,date,path_of_file,cost) "
+                    + "values(?,now(),?,?)";
+
+            PreparedStatement stmt = conn.prepareStatement(queryString);
+            stmt.setString(1, msisdn);
+            stmt.setString(2, path);
+            stmt.setDouble(3, cost);
+
+            stmt.execute();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(dbMethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     void select() throws SQLException {

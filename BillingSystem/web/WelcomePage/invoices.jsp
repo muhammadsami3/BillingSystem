@@ -16,9 +16,7 @@
     msisdn = (msisdn==null)?"00201022591400":msisdn;
     dbMethods db = new dbMethods();
     db.connectToDatabase();
-    ResultSet rscall = db.getContractHistory(msisdn, 1);
-    ResultSet rssms = db.getContractHistory(msisdn, 2);
-    ResultSet rsdata = db.getContractHistory(msisdn, 3);
+    ResultSet rscall = db.getInvoiceRecord(msisdn);
 
 
 %>
@@ -46,18 +44,19 @@
                             while (rscall.next()) {%>
                         <%
                             i++;
-                            int totalSecs = Integer.parseInt(rscall.getString("unit"));
-                            int hours = totalSecs / 3600;
-                            int minutes = (totalSecs % 3600) / 60;
-                            int seconds = totalSecs % 60;
-                            String time = rscall.getString("timezone");
-                            String timearr[] = time.split(" ");
-                            System.out.println("className.methodName()" + timearr[0] + time);
-                            String timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);%>
+                            
+                            String time = rscall.getString("date");
+                            %>
                         <tr class="row100">
-                            <td class="column100 column1" data-column="column1"><%=i%></td>
-                            <td class="column100 column2" data-column="column2"><%=timearr[0]%></td>
-                            <td class="column100 column4" data-column="column3"><button style="font-size:24px">Download File <i class="fa fa-download"></i></button></td>
+                        
+                            <td class="column100 column1" data-column="column1"><%=i %></td>
+                            <td class="column100 column2" data-column="column2"><%=time %></td>
+                            <td class="column100 column4" data-column="column3">
+                                <form Method="post" action="/BillingSystem/Invoicing/outputPDF/fileDownload.jsp">
+                                    <input type="submit" value="Download File ">  <i class="fa fa-download"></i>
+                                    <input type="text" name="path" value="<%=rscall.getString("path_of_file")%>" style="display: none" readonly>
+                                </form>
+                            </td>
                         </tr>
 
                         <%   }
