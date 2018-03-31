@@ -3,6 +3,8 @@
     Created on : Feb 22, 2018, 12:53:54 PM
     Author     : AZIZ
 --%>
+<%@page import="DataBase.DatabaseHandler"%>
+<%@page import="com.itextpdf.text.Rectangle"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="DataBase.dbMethods"%>
 <%@page import="com.itextpdf.text.Element"%>
@@ -26,21 +28,36 @@
 <%@page import="com.itextpdf.text.Document"%>
 <%@page import="com.itextpdf.text.pdf.PdfDocument"%>
 <%@page import="java.awt.Color" %>
-<%    Document document = new Document(PageSize.A4, 50, 50, 50, 50);
+<%!static int i=0;
+%>
+<%   
+    
+    Document document = new Document(PageSize.A4, 50, 50, 50, 50);
 
     dbMethods db = new dbMethods();
+    DatabaseHandler databaseHandler=new DatabaseHandler();
     db.connectToDatabase();
-    ResultSet rs = db.getInvoice("00201022591400");
-    ResultSet PackageResultSet = db.getPackageInfo("00201022591400");
-    double voiceCost = db.getCost(1, "00201022591400");
-    double smsCost = db.getCost(2, "00201022591400");
-    double dataCost = db.getCost(3, "00201022591400");
+    
+    String msisdn=(String)request.getParameter("msisdn");
+    msisdn=(msisdn==null)?"00201022591400":msisdn;
+    
+    ResultSet rs = db.getInvoice(msisdn);
+    ResultSet PackageResultSet = db.getPackageInfo(msisdn);
+    ResultSet clientInfoResultSet = databaseHandler.getcustomerInfo(msisdn);
+    ResultSet rs2=db.getRatePlaneInfo(msisdn);
+    double voiceCost = db.getCost(1, msisdn);
+    double smsCost = db.getCost(2, msisdn);
+    double dataCost = db.getCost(3,msisdn);
+    String name=clientInfoResultSet.getString("fname") + " " + clientInfoResultSet.getString("lname");
+    rs.next();
     rs.next();
     PackageResultSet.next();
+    clientInfoResultSet.next();
     int eMints = Integer.parseInt(rs.getString("mins")) - Integer.parseInt(PackageResultSet.getString("numberofminutes"));
     int eSMS = Integer.parseInt(rs.getString("sms")) - Integer.parseInt(PackageResultSet.getString("numberofsms"));
     int eDATA = Integer.parseInt(rs.getString("data")) - Integer.parseInt(PackageResultSet.getString("numberofdata"));
-    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("e:\\text2.pdf"));
+    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("e:\\text157"+i+".pdf"));
+    i++;
     document.open();
     Image image = Image.getInstance("/1.jpg");
     Image image1 = Image.getInstance("/LOGO.jpg");
@@ -52,29 +69,37 @@
     image2.setAbsolutePosition(270f, 780f);
     image2.scalePercent(50, 50);
 
-    Paragraph title1 = new Paragraph("Welcome To Our Company", FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLDITALIC, new CMYKColor(0, 255, 255, 17)));
-    Paragraph packagename = new Paragraph("Service package : " + PackageResultSet.getString("name"), FontFactory.getFont(FontFactory.HELVETICA, 14, Font.BOLDITALIC, new CMYKColor(0, 255, 255, 17)));
+    Paragraph title1 = new Paragraph("\nWelcome To Our Company", FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLDITALIC, new CMYKColor(0, 255, 255, 17)));
+    Paragraph packagename = new Paragraph(""
+            + "\nClient Name     :"+name
+            + "\nClient Number   :"+msisdn
+            + "\nRate Plane      :" +rs2.getString("name")
+            + "\nService package :" + PackageResultSet.getString("name") + ""
+            + "\n", FontFactory.getFont(FontFactory.HELVETICA, 14, Font.BOLDITALIC, new CMYKColor(0, 255, 255, 17)));
     title1.setAlignment(Element.ALIGN_CENTER);
     Paragraph title11 = new Paragraph("Voice Service ",
             FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD,
                     new CMYKColor(0, 255, 255, 17)));
     Chapter chapter1 = new Chapter(title1, 1);
-   chapter1.add(packagename);
+    chapter1.add(packagename);
     chapter1.setNumberDepth(0);
     Section section1 = chapter1.addSection(title11);
 
     PdfPTable t = new PdfPTable(2);
-    t.setSpacingBefore(25);
-    t.setSpacingAfter(25);
+t.getDefaultCell().setBorder(PdfPCell.BOTTOM);
+    t.setSpacingBefore(5);
+    t.setSpacingAfter(5);
 
     PdfPCell c1 = new PdfPCell(new Phrase("Voice Calls"));
+     c1.setBorder(PdfPCell.BOTTOM);
     t.addCell(c1);
 
     PdfPCell c2 = new PdfPCell(new Phrase(rs.getString("mins")));
+ c2.setBorder(PdfPCell.BOTTOM);
     t.addCell(c2);
 
     t.addCell("Cost/minute");
-    t.addCell(String.valueOf(voiceCost));
+    t.addCell(String.valueOf(voiceCost)+"Minutes");
 
     t.addCell("Free Unit");
     t.addCell(PackageResultSet.getString("numberofminutes"));
@@ -83,7 +108,7 @@
     t.addCell(String.valueOf(eMints));
 
     t.addCell("Total cost");
-    t.addCell(String.valueOf(eMints*voiceCost+"  E£"));
+    t.addCell(String.valueOf(eMints * voiceCost + "  E£"));
 
     section1.add(t);
 
@@ -93,13 +118,17 @@
     Section section2 = chapter1.addSection(title12);
 
     PdfPTable t2 = new PdfPTable(2);
-    t2.setSpacingBefore(25);
-    t2.setSpacingAfter(25);
+    t2.getDefaultCell().setBorder(PdfPCell.BOTTOM);
+
+    t2.setSpacingBefore(5);
+    t2.setSpacingAfter(5);
 
     PdfPCell c3 = new PdfPCell(new Phrase("SMS "));
+     c3.setBorder(PdfPCell.BOTTOM);
     t2.addCell(c3);
 
     PdfPCell c4 = new PdfPCell(new Phrase(rs.getString("sms")));
+     c4.setBorder(PdfPCell.BOTTOM);
     t2.addCell(c4);
 
     t2.addCell("Cost of the Service");
@@ -112,7 +141,7 @@
     t2.addCell(String.valueOf(eSMS));
 
     t2.addCell("Total of Money of this service");
-    t2.addCell(String.valueOf(eSMS*smsCost+"  E£"));
+    t2.addCell(String.valueOf(eSMS * smsCost + "  E£"));
 
     section2.add(t2);
 
@@ -124,44 +153,45 @@
     Section section3 = chapter1.addSection(title13);
 
     PdfPTable t3 = new PdfPTable(2);
-    t3.setSpacingBefore(25);
-    t3.setSpacingAfter(25);
-
+    t3.setSpacingBefore(5);
+    t3.setSpacingAfter(5);
+t3.getDefaultCell().setBorder(PdfPCell.BOTTOM);
     PdfPCell c5 = new PdfPCell(new Phrase(" Usage "));
+     c5.setBorder(PdfPCell.BOTTOM);
     t3.addCell(c5);
 
-    PdfPCell c6 = new PdfPCell(new Phrase(rs.getString("data")+" M") );
+    PdfPCell c6 = new PdfPCell(new Phrase(rs.getString("data") + " M"));
+     c6.setBorder(PdfPCell.BOTTOM);
     t3.addCell(c6);
 
     t3.addCell("Cost/Byte");
     t3.addCell(String.valueOf(dataCost));
 
     t3.addCell("Free Unit");
-    t3.addCell(PackageResultSet.getString("numberofdata")+" M");
+    t3.addCell(PackageResultSet.getString("numberofdata") + " M");
     t3.addCell("Extra units");
     t3.addCell(String.valueOf(eDATA));
-    
+
     t3.addCell("Total of Money of this service");
-    t3.addCell(String.valueOf(eDATA*dataCost+"  E£"));
+    t3.addCell(String.valueOf(eDATA * dataCost + "  E£"));
 
     section3.add(t3);
-Paragraph title14 = new Paragraph("Recuring service ",
+    Paragraph title14 = new Paragraph("Recuring service ",
             FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD,
                     new CMYKColor(0, 255, 255, 17)));
     Section section4 = chapter1.addSection(title14);
 
     PdfPTable t4 = new PdfPTable(1);
+    t4.getDefaultCell().setBorder(PdfPCell.BOTTOM);
     t4.setSpacingBefore(5);
     t4.setSpacingAfter(5);
 
     PdfPCell c7 = new PdfPCell(new Phrase(" Usage "));
+    c7.setBorder(PdfPCell.BOTTOM);
     t4.addCell(c7);
-
 
     t4.addCell("Cost/Byte");
     t4.addCell(String.valueOf(dataCost));
-
- 
 
     section4.add(t4);
 

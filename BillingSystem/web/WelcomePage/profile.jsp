@@ -22,12 +22,12 @@
                     DatabaseHandler db3 = new DatabaseHandler();
                     DatabaseHandler db4 = new DatabaseHandler();
                     session.setAttribute("msisdn", request.getParameter("search"));
-                    ResultSet getcustomerInfo = db1.getcustomerInfo(request.getParameter("search"));
                     ResultSet getServiceInfo = db1.getContractInfo(request.getParameter("search"));
+
+                    ResultSet getcustomerInfo = db1.getcustomerInfo(request.getParameter("search"));
                     ResultSet getallRatePlane = db3.getAllRatePlane();
                     getallRatePlane.next();
-
-                    while (getcustomerInfo.next()) {
+                   if(getcustomerInfo.next()){
                 %>
             </nav>
             <article>
@@ -131,9 +131,12 @@
                 </div>
                 <%
 
-                            }
                         }
                     }
+}
+else{
+response.sendRedirect(location);
+}
                 %>
                 </form>
                 </body>
