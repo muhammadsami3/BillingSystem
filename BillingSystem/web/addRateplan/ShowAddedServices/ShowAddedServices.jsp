@@ -42,10 +42,10 @@
    while (getallRService.next()) {
        
       out.println("<div class='pricetab'>");
-      out.println("<h1>Service Package</h1>");
+      out.println("<h1>Recurring Service</h1>");
                 out.println("<div class='price'>"); 
-                out.println("<font align-self: center;font-size: x-large;font-style: bold;font-weight: bold;color: white;bottom: -8%;padding-top: 0px;margin-top: 0px;"
-                        + ">"+getallRService.getString("name")+"</font>"); 
+                out.println("<h2 style='align-self: center;font-size: x-large;font-style: bold;font-weight:bold;color:white;bottom: -8%;padding-top: 30px;margin-top: 10px;'"
+                        + ">"+getallRService.getString("name")+"</h2>"); 
                 out.println("</div>");
       out.println("<div class='infos'>");
         out.println("<h3>Description : "+getallRService.getString("description")+"</h3>");
@@ -57,7 +57,7 @@
         out.println("<div class='button'>");
             out.println(" <form class='modal-content' action='/BillingSystem/DeleteAddedService' method='Get'>");
         %>
-        <input type="text" style="display: none" name="serviceid" value="000">
+        <input type="text" style="display: none" name="serviceid" value="<%=getallRService.getString("id")%>">
         <%
             
             out.println("<input type='submit' value='DELETE'/>");

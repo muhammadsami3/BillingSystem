@@ -5,6 +5,7 @@
  */
 package DeleteAddedService;
 
+import DataBase.DatabaseHandler;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -50,7 +51,10 @@ public class DeleteAddedService extends HttpServlet {
         
         PrintWriter out = response.getWriter();
         out.println("HIIII");
-    }
+        DatabaseHandler d2 = new DatabaseHandler();
+       d2.deleteRecuriingforUSer(Integer.parseInt(request.getParameter("serviceid")));
+       response.sendRedirect("/BillingSystem/WelcomePage/home.jsp");
+               }
 
     /**
      * Handles the HTTP <code>POST</code> method.

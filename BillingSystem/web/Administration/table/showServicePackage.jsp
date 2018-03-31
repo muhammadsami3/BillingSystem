@@ -64,7 +64,8 @@
       out.println("<div class='pricetab'>");
       out.println("<h1>Service Package</h1>");
                 out.println("<div class='price'>"); 
-                out.println("<h2>"+rs.getString(2)+"</h2>"); 
+                out.println("<h2 style='align-self: center;font-size: x-large;font-style: bold;font-weight:bold;color:white;bottom: -8%;padding-top: 30px;margin-top: 10px;'"
+                        +rs.getString(2)+"</h2>"); 
                 out.println("</div>");
       out.println("<div class='infos'>");
         out.println("<h3>Number Of Minutes = "+rs.getDouble("numberofminutes")+"</h3>");
