@@ -26,6 +26,7 @@
                     ResultSet getServiceInfo = db1.getContractInfo(request.getParameter("search"));
                     ResultSet getallRatePlane = db3.getAllRatePlane();
                     getallRatePlane.next();
+                    boolean flag=false;
 
                     while (getcustomerInfo.next()) {
                 %>
@@ -133,7 +134,14 @@
 
                             }
                         }
-                    }
+flag=true;
+                    }if(flag==false){
+%>
+    
+<h1>SORRY THIS NUMBER IS NOT FOUND</h1>
+
+<% }
+
                 %>
                 </form>
                 </body>
