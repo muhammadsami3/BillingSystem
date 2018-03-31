@@ -34,7 +34,7 @@
         <description>Location to store uploaded file</description> 
         <param-name>file-upload</param-name> 
         <param-value>
-         C:\Users\Muhammad Sami\AppData\Roaming\NetBeans\8.2\apache-tomcat-8.0.27.0_base\temp\
+         e:\
         </param-value> 
     </context-param>
 </web-app>

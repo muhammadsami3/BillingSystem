@@ -72,7 +72,9 @@ public class DatabaseHandler {
             System.out.println(e.getMessage());
         }
         return id;
-    }
+    }   
+    
+    
 
     public ResultSet getAllRatePlane() {
         try {
