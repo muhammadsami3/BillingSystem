@@ -3,6 +3,7 @@
     Created on : Feb 22, 2018, 12:53:54 PM
     Author     : AZIZ
 --%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Random"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="DataBase.DatabaseHandler"%>
@@ -202,9 +203,13 @@ int value = rand.nextInt(10000000);
     t4.setSpacingBefore(5);
     t4.setSpacingAfter(5);
     ResultSet rs3 = databaseHandler.getAllrecuring_service(msisdn);
+        double cost2=0;
+
     while (rs3.next()) {
         t4.addCell("service Name" + rs3.getString("name"));
         t4.addCell("Costs " + rs3.getString("cost") + " E£");
+        double temp=Double.parseDouble(rs3.getString("cost"));
+        cost2+=temp;
     }
 
     section4.add(t4);
@@ -221,18 +226,28 @@ int value = rand.nextInt(10000000);
     t5.setSpacingAfter(5);
 
     ResultSet rs4 = databaseHandler.getAllonetime_fee_service(msisdn);
+    double cost1=0;
     while (rs4.next()) {
         t5.addCell("service Name " + rs4.getString("name"));
         t5.addCell("Costs " +rs4.getString("cost") + " E£");
+        double temp=Double.parseDouble(rs4.getString("cost"));
+        cost1+=temp;  
     }
 
     section5.add(t5);
-    double cost = eDATA * dataCost / 100 + eMints * voiceCost / 100 + smsCost * eSMS / 100;
+    double cost = (eDATA * (dataCost / 100) )+ (eMints * (voiceCost / 100)) +(( smsCost * eSMS) / 100) + cost1+cost2;
+    cost*=1.1;
+    DecimalFormat df2 = new DecimalFormat(".##");
+    cost=Double.parseDouble(df2.format(cost));
     Paragraph title16 = new Paragraph("\n\nTotal Cost : " + cost + " E£",
             FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLD,
                     new CMYKColor(0, 255, 255, 100)));
 title16.setAlignment(Element.ALIGN_CENTER);
     chapter1.add(title16);
+       Paragraph title17 = new Paragraph("\n\nAdded Taxes: 10%",
+            FontFactory.getFont(FontFactory.HELVETICA, 8, Font.BOLD,
+                    new CMYKColor(0, 255, 255, 255)));
+    chapter1.add(title17);
 
 
 %>
