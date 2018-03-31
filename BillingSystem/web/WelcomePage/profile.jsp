@@ -64,7 +64,7 @@
 while (getServiceMoreInfo.next()) {
 %>
                 <label for="address"><b> Name of Service Package</b></label>
-                <input type="text" value="<%=getServiceMoreInfo.getString(2)%>" name="address" required>
+                <input type="text" value="<%=getServiceMoreInfo.getString(2)%>" name="address" required readonly>
 
                 <label for="address"><b> Number of Minutes</b></label>
                 <input type="text" value="<%=getServiceMoreInfo.getString(4)%>" name="address" required>
@@ -82,6 +82,11 @@ while (getServiceMoreInfo.next()) {
                 <br>
                 <br>
                 <input class="button" type="submit" style="width: 100%;" value="SHOW HISTORY"/>
+                
+                
+                <a href="/BillingSystem/addRateplan/addNewServiceToCustomer.jsp?msisdn=<%=request.getParameter("search")%>" class="button"  style="width: 100%;" >ADD NEW SERVICE</a>
+                        
+                
             </div>
 <%
     
@@ -89,7 +94,10 @@ while (getServiceMoreInfo.next()) {
                                 }
                             }
                         %>
+                        
+
         </form>
+        
     </body>
 </html>
 

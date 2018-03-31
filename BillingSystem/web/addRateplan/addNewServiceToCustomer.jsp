@@ -46,6 +46,11 @@
 						ADD NEW SERVICE
 					</span>
 
+                                        <div class="wrap-input2 validate-input" data-validate="Number is required">
+                                            <input class="input2" type="text" name="numbermsisdn" value="<%=request.getParameter("msisdn")%>" readonly>
+						<span class="focus-input2" data-placeholder="Enter Number"></span>
+					</div>
+                                
 					<div class="wrap-input2 validate-input" data-validate="Name is required">
                                             <input class="input2" type="text" name="serviceName" required>
 						<span class="focus-input2" data-placeholder="Enter Name of The Service"></span>
