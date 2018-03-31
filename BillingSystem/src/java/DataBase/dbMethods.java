@@ -59,7 +59,7 @@ public class dbMethods {
     public ResultSet getPackageInfo(String msisdn) {
         ResultSet rs = null;
         try {
-            String queryString = " select * from servicepackage where id =(select packageid from contract where msisdn=?)";
+            String queryString = "select * from servicepackage where id =(select packageid from contract where msisdn=?)";
 
             PreparedStatement stmt = conn.prepareStatement(queryString);
             stmt.setString(1, msisdn);

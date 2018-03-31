@@ -398,7 +398,7 @@ public class DatabaseHandler {
     public ResultSet getAllonetime_fee_service(String msisdn) {
  int id = getContractId(msisdn);
         try {
-            String queryString = new String("select * from added_service where id in(select added_serviceid from onetime_fee_service where contractid=?);");
+            String queryString = new String("select * from added_service where id in(select added_serviceid from onetime_fee_service where contractid=?)");
 //            String queryString = new String("select * from servicepackage");
             preparedStmt = conn.prepareStatement(queryString);
             preparedStmt.setInt(1, id);
