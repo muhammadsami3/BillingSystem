@@ -58,7 +58,7 @@
                             <span class="focus-input2" data-placeholder="Enter Number"></span>
                         </div>
 
-                        <label for="profile"><b>Select Recurring Service</b></label>
+                        <label for="profile"><b>Select One Time Fee Service</b></label>
                         <div class="selectWrapper">
                             <select  name ="serviceType">
                                 <%
@@ -77,13 +77,13 @@
                                         System.out.println(e.getMessage());
                                     }
                                     stmt = connect.createStatement();
-                                    String queryString = new String("Select * from added_service where type='recurring'");
-                                    String queryString1 = new String("Select * from added_service where type='recurring'");
+                                    String queryString = new String("Select * from added_service where type='onetime'");
+                                    String queryString1 = new String("Select * from added_service where type='onetime'");
 
                                     rs = stmt.executeQuery(queryString);
                                    
                                     while (rs.next()) {
-                                        out.println("<option value='recurring' >"+rs.getString(2)+"</option>");
+                                        out.println("<option value='onetime' >"+rs.getString(2)+"</option>");
                                     }
                                      rs1 = stmt.executeQuery(queryString1);
                                     while (rs1.next()) {
