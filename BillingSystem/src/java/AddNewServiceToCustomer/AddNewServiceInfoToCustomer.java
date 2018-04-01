@@ -62,7 +62,7 @@ public class AddNewServiceInfoToCustomer extends HttpServlet {
         } else if (request.getParameter("serviceType").equals("onetime")) {
             d2.addOneTime(request.getParameter("numbermsisdn"), request.getParameter("serviceName"));
         }
-    response.sendRedirect("/BillingSystem/WelcomePage/home.jsp");
+    response.sendRedirect("/BillingSystem/WelcomePage/profile.jsp");
     }
 
     /**

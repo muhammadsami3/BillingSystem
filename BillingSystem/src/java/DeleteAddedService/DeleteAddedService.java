@@ -53,7 +53,7 @@ public class DeleteAddedService extends HttpServlet {
         out.println("HIIII");
         DatabaseHandler d2 = new DatabaseHandler();
        d2.deleteRecuriingforUSer(Integer.parseInt(request.getParameter("serviceid")));
-       response.sendRedirect("/BillingSystem/WelcomePage/home.jsp");
+       response.sendRedirect("/BillingSystem/WelcomePage/profile.jsp");
                }
 
     /**
