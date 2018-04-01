@@ -53,11 +53,21 @@
             cost = Double.parseDouble(cdrInfo[5]);
             dbMethods db = new dbMethods();
             db.connectToDatabase();
+
+            if (serviceid == 1) {
+                unit =(int)Math.ceil((double) unit / 60);
+//          double newUnit=(double)unit;
+//          newUnit=cell
+//          newUnit/=60;
+//          unit=(int)newUnit;
+            }
+
             if (serviceid != 3) {
                 cost = db.getCost(serviceid, callingmsisdn);
+                cost *= unit;
             }
-cost*=unit;
-System.out.println("className.methodName()"+cost);
+
+            System.out.println("className.methodName()" + cost);
             db.rating(cdrInfo[0], cdrInfo[1], cost, serviceid, unit, startTime);
             System.out.println("className.methodNames()" + callingmsisdn + calledmsisdn + serviceid + unit + startTime + cost);
         }

@@ -28,7 +28,7 @@
             <div class="container-contact2">
                 <div class="wrap-contact2">
 
-                    <div style="height: 35px;text-align: center;">
+ l                   <div style="height: 35px;text-align: center;">
                         <font style="size: 30px;align-content: center">Your Rate Plan is :  </font>
                         <font style="size: 30px; color:orange">
 
@@ -73,7 +73,7 @@
                             out.println("<br>");
             //                out.println("Cost OF Minutes:<br><br>");
                             out.println("<div class='wrap-input2 validate-input' >");
-                            out.println("<input type='number' class='input2' name='costOFMinutes" + i + "' required>L.E");
+                            out.println("<input type='number' class='input2' name='costOFMinutes" + i + "' required>Piastre");
                             out.println("<span class='focus-input2' data-placeholder='Cost of Minutes of Service Package " + i + "'></span></div>");
 
                             out.println("<br>");
@@ -85,7 +85,7 @@
                             out.println("<br>");
             //                out.println("Cost OF SMS:<br>");
                             out.println("<div class='wrap-input2 validate-input' >");
-                            out.println("<input type='number' class='input2' name='costOFSMS" + i + "' required>L.E");
+                            out.println("<input type='number' class='input2' name='costOFSMS" + i + "' required>Piastre");
                             out.println("<span class='focus-input2' data-placeholder='Cost of SMS of Service Package " + i + "'></span></div>");
 
                             out.println("<br>");
@@ -97,7 +97,7 @@
                             out.println("<br>");
             //                out.println("Cost OF Data:<br>");
                             out.println("<div class='wrap-input2 validate-input' >");
-                            out.println("<input type='number' class='input2' name='costOFDATA" + i + "' required>L.E");
+                            out.println("<input type='number' class='input2' name='costOFDATA" + i + "' required>Piastre");
                             out.println("<span class='focus-input2' data-placeholder='Cost of Data of Service Package " + i + "'></span></div>");
 
                             out.println("<br>");

@@ -6,7 +6,7 @@
  */
 package billpackage;
 
-import dataBaseFunctions.dbMethods;
+import DataBase.dbMethods;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -43,6 +43,19 @@ public class bill extends HttpServlet {
         return newcost;
     }
 
+    double calcDatacost(int unit, double freeunits, double cost, double unitprice) {
+        double newcost = 0.0;
+
+        if (freeunits > unit) {
+            newcost = 0;
+            freeunits = freeunits - unit;
+        } else if (freeunits <= unit) {
+            newcost = cost;
+        }
+
+        return newcost;
+    }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -57,10 +70,10 @@ public class bill extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            String msisdn = "00201022591400";
+            String msisdn = "00201221234567";
 
-            dbMethods.connectToDatabase();
             dbMethods obj = new dbMethods();
+            obj.connectToDatabase();
 
             int unit, contractid, serviceid;
             int packageid;
@@ -87,11 +100,16 @@ public class bill extends HttpServlet {
                         serviceid = rs.getInt("serviceid");
 
                         unitprice = obj.getUnitPriceById(serviceid, packageid);
-
+                        unitprice/=100;
+                        
                         freeunits = obj.getNumofFreeunits1(contractid, serviceid);
                         System.out.println(freeunits);
+                        if (serviceid != 3) {
+                            newcost = calcNewcost(unit, freeunits, cost, unitprice);
+                        } else {
+                            newcost = calcDatacost(unit, freeunits, cost, unitprice);
 
-                        newcost = calcNewcost(unit, freeunits, cost, unitprice);
+                        }
                         obj.isbilled(rs.getInt("udrid"));
                         obj.addhistory(serviceid, rs.getInt("udrid"), msisdn, newcost, false, rs.getInt("unit"));
 

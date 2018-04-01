@@ -73,7 +73,7 @@
                         while (getServiceInfo.next()) {
                             String pacakge = getServiceInfo.getString("packageid");
 
-                            ResultSet getServiceMoreInfo = db2.getServiceMoreInfo(3);
+                            ResultSet getServiceMoreInfo = db2.getServiceMoreInfo(Integer.parseInt(pacakge));
 
 
                             while (getServiceMoreInfo.next()) {

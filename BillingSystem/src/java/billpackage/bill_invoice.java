@@ -6,7 +6,7 @@
  */
 package billpackage;
 
-import dataBaseFunctions.dbMethods;
+import DataBase.dbMethods;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -41,20 +41,20 @@ public class bill_invoice extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
         
-            String msisdn="00201022591400";
+            String msisdn="00201221234567";
            
-           dbMethods.connectToDatabase();
            dbMethods obj=new dbMethods();
+           obj.connectToDatabase();
            
-            try {
+           
                 obj.bill(msisdn);
-            } catch (SQLException ex) {
-                Logger.getLogger(bill_invoice.class.getName()).log(Level.SEVERE, null, ex);
-            }
+          
             
             HttpSession session =request.getSession(true);
             session.setAttribute("billed", "t");
             response.sendRedirect("/BillingSystem/Billing/billing.jsp");
+        } catch (SQLException ex) {
+            Logger.getLogger(bill_invoice.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
