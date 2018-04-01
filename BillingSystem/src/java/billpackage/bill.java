@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -70,7 +71,11 @@ public class bill extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            String msisdn = "00201221234567";
+            
+            String msisdn =request.getParameter("msisdn");
+            msisdn=(msisdn==null)?"00201221234567":msisdn;
+            HttpSession session=request.getSession(true);
+            session.setAttribute("msisdn", msisdn);
 
             dbMethods obj = new dbMethods();
             obj.connectToDatabase();

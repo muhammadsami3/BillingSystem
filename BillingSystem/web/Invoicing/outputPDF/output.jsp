@@ -43,10 +43,11 @@ int value = rand.nextInt(10000000);
     DatabaseHandler databaseHandler = new DatabaseHandler();
     db.connectToDatabase();
 
-    String msisdn = (String) request.getParameter("msisdn");
-    msisdn = (msisdn == null) ? "00201022591400" : msisdn;
-
+    String msisdn = (String) session.getAttribute("msisdn");
+    msisdn = (msisdn == null) ? "00201221234567" : msisdn;
+msisdn="00201221234567";
     ResultSet rs = db.getInvoice(msisdn);
+    db.invoiced(msisdn);
     ResultSet PackageResultSet = db.getPackageInfo(msisdn);
     ResultSet clientInfoResultSet = databaseHandler.getcustomerInfo(msisdn);
     ResultSet rs2 = db.getRatePlaneInfo(msisdn);
@@ -118,7 +119,8 @@ int value = rand.nextInt(10000000);
     t.addCell(String.valueOf(eMints) + " Minutes");
 
     t.addCell("Total cost");
-    t.addCell(String.valueOf(eMints * voiceCost / 100 + "  E£"));
+    
+    t.addCell(rs.getString("callsum")+"  E£");
 
     section1.add(t);
 
@@ -151,7 +153,7 @@ int value = rand.nextInt(10000000);
     t2.addCell(String.valueOf(eSMS) + " Message   ");
 
     t2.addCell("Total Cost");
-    t2.addCell(String.valueOf(eSMS * smsCost / 100 + "  E£"));
+    t2.addCell(rs.getString("smssum") + "  E£");
 
     section2.add(t2);
 
@@ -187,7 +189,7 @@ int value = rand.nextInt(10000000);
     t3.addCell(megas + " Mega");
 
     t3.addCell("Total Cost");
-    t3.addCell(String.valueOf(eDATA * dataCost / 100 + "  E£"));
+    t3.addCell(rs.getString("datasum")+"  E£");
 
     section3.add(t3);
     //add recuring servicess
@@ -231,12 +233,15 @@ int value = rand.nextInt(10000000);
         t5.addCell("service Name " + rs4.getString("name"));
         t5.addCell("Costs " +rs4.getString("cost") + " E£");
         double temp=Double.parseDouble(rs4.getString("cost"));
-        cost1+=temp;  
+        cost1+=temp;
     }
-
+   int id=databaseHandler.getContractId(msisdn);
+   databaseHandler.onetime_fee_service_remove(id);
+    
+double cost=Double.parseDouble(rs.getString("finalcost"));
     section5.add(t5);
-    double cost = (eDATA * (dataCost / 100) )+ (eMints * (voiceCost / 100)) +(( smsCost * eSMS) / 100) + cost1+cost2;
-    cost*=1.1;
+   cost = cost + cost1*1.1 +cost2*1.1;
+    
     DecimalFormat df2 = new DecimalFormat(".##");
     cost=Double.parseDouble(df2.format(cost));
     Paragraph title16 = new Paragraph("\n\nTotal Cost : " + cost + " E£",

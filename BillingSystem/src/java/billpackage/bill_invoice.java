@@ -41,7 +41,8 @@ public class bill_invoice extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
         
-            String msisdn="00201221234567";
+            HttpSession session=request.getSession(false);
+            String msisdn=(String)session.getAttribute("msisdn");
            
            dbMethods obj=new dbMethods();
            obj.connectToDatabase();
@@ -49,10 +50,8 @@ public class bill_invoice extends HttpServlet {
            
                 obj.bill(msisdn);
           
-            
-            HttpSession session =request.getSession(true);
             session.setAttribute("billed", "t");
-            response.sendRedirect("/BillingSystem/Billing/billing.jsp");
+            response.sendRedirect("/BillingSystem/Invoicing/outputPDF/output.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(bill_invoice.class.getName()).log(Level.SEVERE, null, ex);
         }

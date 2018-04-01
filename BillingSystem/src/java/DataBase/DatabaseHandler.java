@@ -432,10 +432,19 @@ public class DatabaseHandler {
             preparedStmt = conn.prepareStatement(queryString);
             preparedStmt.setInt(1, id);
             rs = preparedStmt.executeQuery();
+  
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return rs;
+    }
+      public void onetime_fee_service_remove(int contractid) throws SQLException {
+        String query = "update onetime_fee_service set isbilled=true where contractid=?";
+
+        PreparedStatement stmt = conn.prepareStatement(query);
+        stmt.setInt(1, contractid);
+        stmt.execute();
+
     }
     
      //insrtcustomer

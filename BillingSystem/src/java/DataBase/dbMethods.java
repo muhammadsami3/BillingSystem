@@ -43,8 +43,9 @@ public class dbMethods {
     public static void main(String[] args) throws SQLException {
         dbMethods db = new dbMethods();
         db.connectToDatabase();
-        db.select();
-        db.invoice_record("000000","455", 55.0);
+//        db.select();
+//        db.invoice_record("000000", "455", 55.0);
+//        db.invoiced("00201221234567");
 //        System.out.println("DataBase.dbMethods.main()" + db.getCost(1, "00201022591400"));
 //        System.out.println("DataBase.dbMethods.main()" + db.getcontractid("00201022591400"));
 //        System.out.println("DataBase.dbMethods.main()" + db.getInvoice("00201022591400"));
@@ -167,20 +168,32 @@ public class dbMethods {
     }
 
     public ResultSet getInvoice(String msisdn) throws SQLException {
-        String queryString = "select * from invoicing where msisdn=?";
+        String queryString = "select * from invoicing where msisdn=? and invoice='t'";
         PreparedStatement stmt = conn.prepareStatement(queryString);
         stmt.setString(1, msisdn);
         ResultSet rs = stmt.executeQuery();
+
         return rs;
     }
-     public ResultSet getInvoiceRecord(String msisdn) throws SQLException {
+
+    public void invoiced(String msisdn) {
+        try {
+            String queryString2 = "update invoicing set invoice='f' where msisdn=? ";
+            PreparedStatement stmt = conn.prepareStatement(queryString2);
+            stmt.setString(1, msisdn);
+            stmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(dbMethods.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public ResultSet getInvoiceRecord(String msisdn) throws SQLException {
         String queryString = " SELECT * FROM invoice_record where msisdn_number=?";
         PreparedStatement stmt = conn.prepareStatement(queryString);
         stmt.setString(1, msisdn);
         ResultSet rs = stmt.executeQuery();
         return rs;
     }
-   
 
     public void invoice_record(String msisdn, String path, Double cost) {
         System.out.println("DataBase.dbMethods.rating()  " + msisdn);
@@ -213,8 +226,7 @@ public class dbMethods {
 
     }
 
-
- public ResultSet getuserCdrs(String msisdn) {
+    public ResultSet getuserCdrs(String msisdn) {
         ResultSet rs = null;
         try {
             Statement stmt2 = conn.createStatement();
@@ -267,18 +279,17 @@ public class dbMethods {
                 stmt.execute();
             }
         }
-        
-       
-          ResultSet PackageResultSet =getPackageInfo(msisdn);
-          PackageResultSet.next();
-          double fee=Double.parseDouble(PackageResultSet.getString("cost"));
 
-        finalcost = callSum + smsSum + dataSum+fee;
-        finalcost*=1.1;
-   
-       
+        ResultSet PackageResultSet = getPackageInfo(msisdn);
+        PackageResultSet.next();
+        double fee = Double.parseDouble(PackageResultSet.getString("cost"));
+        callSum /= 100;
+        smsSum /= 100;
+        dataSum /= 100;
+        finalcost = callSum + smsSum + dataSum + fee;
+        finalcost *= 1.1;
 
-        String query = "insert into invoicing (msisdn,mins,sms,data,finalcost,date,callSum,smsSum,dataSum,fee) values (?,?,?,?,?,now(),?,?,?,?)";
+        String query = "insert into invoicing (msisdn,mins,sms,data,finalcost,date,callSum,smsSum,dataSum,fee,invoice) values (?,?,?,?,?,now(),?,?,?,?,'t')";
 
         PreparedStatement stmt1 = conn.prepareStatement(query);
         stmt1.setString(1, msisdn);
