@@ -45,7 +45,6 @@ int value = rand.nextInt(10000000);
 
     String msisdn = (String) session.getAttribute("msisdn");
     msisdn = (msisdn == null) ? "00201221234567" : msisdn;
-msisdn="00201221234567";
     ResultSet rs = db.getInvoice(msisdn);
     db.invoiced(msisdn);
     ResultSet PackageResultSet = db.getPackageInfo(msisdn);
@@ -86,6 +85,7 @@ msisdn="00201221234567";
             + "\nClient Number     : " + msisdn
             + "\nRate Plane           : " + rs2.getString("name")
             + "\nService package : " + PackageResultSet.getString("name") + ""
+            + "\nMonthly fees      : " + PackageResultSet.getString("cost") + " E£"
             + "\n\n\n", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLDITALIC, new CMYKColor(0, 0, 0, 255)));
     title1.setAlignment(Element.ALIGN_CENTER);
     Paragraph title11 = new Paragraph("Voice Service ",
