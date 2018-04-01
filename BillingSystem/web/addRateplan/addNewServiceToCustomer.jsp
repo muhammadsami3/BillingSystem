@@ -37,7 +37,8 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <link rel="stylesheet" href="/BillingSystem/Styling/css/rateplanecss.css">
-        
+<link rel="stylesheet" href="/BillingSystem/Styling/css/addNewCustomer.css">
+        <link rel="stylesheet" href="/BillingSystem/Styling/css/main.css">        
         <!--===============================================================================================-->
         <%@include file="../Styling/header_footer/header.html" %>
     </head>
