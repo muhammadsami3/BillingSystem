@@ -40,7 +40,7 @@
             prep.setString(2, msisdn);
             prep.setInt(3, Integer.parseInt(request.getParameter("servicepackage")));
             prep.execute();
-
+response.sendRedirect("/BillingSystem/Administration/addNewCustomer.jsp");
         %>
 
     </body>

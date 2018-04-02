@@ -28,7 +28,7 @@
             <div class="container-contact2">
                 <div class="wrap-contact2">
 
- l                   <div style="height: 35px;text-align: center;">
+                <div style="height: 35px;text-align: center;">
                         <font style="size: 30px;align-content: center">Your Rate Plan is :  </font>
                         <font style="size: 30px; color:orange">
 
